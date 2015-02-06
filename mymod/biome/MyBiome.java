@@ -16,12 +16,9 @@ public class MyBiome extends BiomeGenBase
         
         this.setBiomeName("Crimson");
         
-        this.topBlock = (byte)Main.MyBlock_2.blockID;
+        this.topBlock = (byte)Main.MyBlock_1.blockID;
         this.fillerBlock = (byte)Block.blockNetherQuartz.blockID;
         
-        this.theBiomeDecorator.bigMushroomsPerChunk = 10;
-        this.theBiomeDecorator.treesPerChunk = 5;    
-
         this.spawnableCreatureList.add(new SpawnListEntry(EntityMagmaCube.class, 1, 100, 150));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPigZombie.class, 10, 20, 25));
         

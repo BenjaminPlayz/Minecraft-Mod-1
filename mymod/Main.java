@@ -7,6 +7,9 @@ import mymod.armor.MyArmor2;
 import mymod.biome.MyBiome;
 import mymod.blocks.MyBlock;
 import mymod.blocks.MyBlockGen;
+import mymod.entity.wraith.MyEntityWraith;
+import mymod.entity.wraith.MyModelWraith;
+import mymod.entity.wraith.MyRenderWraith;
 import mymod.entity.zombie.MyEntityZombie;
 import mymod.entity.zombie.MyRenderZombie;
 import mymod.items.MyFood;
@@ -368,6 +371,16 @@ public class Main {
         LanguageRegistry.addName(MyItem_6, "Crimsonate Chunk");  
 	
 	
+	
+	 //  REGISTER YOUR ENTITY
+        EntityRegistry.registerGlobalEntityID(MyEntityWraith.class, "Corrupt Wraith", EntityRegistry.findGlobalUniqueEntityId());  
+        EntityRegistry.addSpawn(MyEntityWraith.class, 25, 5, 10, EnumCreatureType.monster, MyBiome_1);  
+        registerEntityEgg(MyEntityWraith.class, (new Color(255, 255, 255)).getRGB(), (new Color(0, 0, 0)).getRGB());
+        RenderingRegistry.registerEntityRenderingHandler(MyEntityWraith.class, new MyRenderWraith(new MyModelWraith(), 0.3F));
+        ModLoader.addLocalization("entity.Corrupt Wraith.name", "Corrupt Wraith");
+	
+	
+	
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
 	}
@@ -542,6 +555,16 @@ public class Main {
                 "SSS",
                 "SSS",
             'S', MyItem_6,
+        });
+
+
+//  CRIMSONATE CHUNK RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyItem_6, 1), new Object[]
+        {
+                "SSS",
+                "SSS",
+                "SSS",
+            'S', MyItem_5,
         });
 
 
