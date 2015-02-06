@@ -77,9 +77,6 @@ public class Main {
  //  DECLARE NEW TOOL MATERIAL
         public static EnumToolMaterial MyToolMaterialCrimsonatePickaxe = EnumHelper.addToolMaterial("Crimsonate Pickaxe", 3, 4683, 23.0F, 3.0F, 22);
         
-        //  DECLARE NEW TOOL MATERIAL
-        public static EnumToolMaterial MyToolMaterialTest = EnumHelper.addToolMaterial("Test", 500, 4683, 23.0F, 3.0F, 22);
-
         
 
  //  DECLARE NEW TOOL MATERIAL
@@ -183,7 +180,8 @@ public class Main {
 //  DECLARE THE ITEM
         public static Item MyItem_5;
 
-
+//  DECLARE THE ITEM
+        public static Item MyItem_6;
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
@@ -364,6 +362,12 @@ public class Main {
         LanguageRegistry.addName(MyItem_5, "Crimsonate Shard");  
 	
 	
+		//  LOAD THE ITEM
+        MyItem_6 = new MyItem(2099, "MyItem_6").setCreativeTab(CreativeTabs.tabMaterials).setMaxStackSize(64);
+        GameRegistry.registerItem(MyItem_6, "MyItem_6");
+        LanguageRegistry.addName(MyItem_6, "Crimsonate Chunk");  
+	
+	
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
 	}
@@ -414,17 +418,6 @@ public class Main {
         		
         		
         		
-        		
-         //  CRIMSONATE INGOT RECIPE         
-        GameRegistry.addRecipe(new ItemStack(MyItem_1, 2), new Object[]
-        {
-                "XSX",
-                "SOS",
-                "XSX",
-            'S', Block.blockDiamond,
-            'X', Block.blockEmerald,
-            'O', Block.beacon,
-        });
         		
          //  ITEM RECIPE         
         GameRegistry.addRecipe(new ItemStack(MyItem_2, 2), new Object[]
@@ -540,6 +533,16 @@ public class Main {
             'X', MyItem_3,
         }); 
         
+
+
+ //  CRIMSONATE INGOT RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyItem_1, 1), new Object[]
+        {
+                "SSS",
+                "SSS",
+                "SSS",
+            'S', MyItem_6,
+        });
 
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	

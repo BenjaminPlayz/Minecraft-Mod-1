@@ -3,6 +3,7 @@ package mymod.entity.zombie;
 import java.util.List;
 import java.util.UUID;
 
+import mymod.Main;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -199,7 +200,7 @@ public class MyEntityZombie extends EntityZombie
 
         for (k = 0; k < j; ++k)
         {
-            this.dropItem(Item.goldNugget.itemID, 1);
+            this.dropItem(Main.MyItem_5.itemID, 1);
         }
     }
 
@@ -213,7 +214,7 @@ public class MyEntityZombie extends EntityZombie
 
     protected void dropRareDrop(int par1)
     {
-        this.dropItem(Item.ingotGold.itemID, 1);
+        this.dropItem(Main.MyItem_6.itemID, 1);
     }
 
     /**

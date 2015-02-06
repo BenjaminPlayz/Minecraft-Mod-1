@@ -16,7 +16,7 @@ public class MyBiome extends BiomeGenBase
         
         this.setBiomeName("Crimson");
         
-        this.topBlock = (byte)Main.MyBlock_1.blockID;
+        this.topBlock = (byte)Main.MyBlock_2.blockID;
         this.fillerBlock = (byte)Block.blockNetherQuartz.blockID;
         
         this.theBiomeDecorator.bigMushroomsPerChunk = 10;
