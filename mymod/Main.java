@@ -76,6 +76,11 @@ public class Main {
 
  //  DECLARE NEW TOOL MATERIAL
         public static EnumToolMaterial MyToolMaterialCrimsonatePickaxe = EnumHelper.addToolMaterial("Crimsonate Pickaxe", 3, 4683, 23.0F, 3.0F, 22);
+        
+        //  DECLARE NEW TOOL MATERIAL
+        public static EnumToolMaterial MyToolMaterialTest = EnumHelper.addToolMaterial("Test", 500, 4683, 23.0F, 3.0F, 22);
+
+        
 
  //  DECLARE NEW TOOL MATERIAL
         public static EnumToolMaterial MyToolMaterialCrimsonateSword = EnumHelper.addToolMaterial("Crimsonate Sword", 3, 4864, 8.0F, 7.0F, 22);
