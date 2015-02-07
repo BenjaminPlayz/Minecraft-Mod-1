@@ -5,6 +5,7 @@ import java.awt.Color;
 import mymod.armor.MyArmor;
 import mymod.armor.MyArmor2;
 import mymod.biome.MyBiome;
+import mymod.biome.MyCorruptionBiome;
 import mymod.blocks.MyBlock;
 import mymod.blocks.MyBlockGen;
 import mymod.entity.wraith.MyEntityWraith;
@@ -12,6 +13,8 @@ import mymod.entity.wraith.MyModelWraith;
 import mymod.entity.wraith.MyRenderWraith;
 import mymod.entity.zombie.MyEntityZombie;
 import mymod.entity.zombie.MyRenderZombie;
+import mymod.handlers.MyCraftingHandler;
+import mymod.handlers.MyPickupHandler;
 import mymod.items.MyFood;
 import mymod.items.MyItem;
 import mymod.items.MyPickaxe;
@@ -31,6 +34,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.ModLoader;
+import net.minecraft.stats.Achievement;
+import net.minecraft.stats.AchievementList;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
@@ -132,6 +137,10 @@ public class Main {
 //  DECLARE THE BIOME
         public static  BiomeGenBase MyBiome_1;  
 
+//  DECLARE THE BIOME
+        public static  BiomeGenBase MyCorruptionBiome_1;  
+
+
 //  DECLARE THE BLOCK
         public static Block MyBlock_2;
 
@@ -186,6 +195,11 @@ public class Main {
 //  DECLARE THE ITEM
         public static Item MyItem_6;
 
+   //	DECLARE THE NEW ACHIEVEMENTS	
+    	public static Achievement MyAchievement_1;
+    	public static Achievement MyAchievement_2;
+
+
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
 
@@ -215,11 +229,11 @@ public class Main {
                                                                     /** Hardness is how long it takes to mine block, Resistance is how strong the block is to Explosions */     	
         MyBlock_1 = new MyBlock(250, Material.rock, "MyBlock_1").setLightValue(0.7586F).setHardness(10.5F).setResistance(14.5F).setStepSound(Block.soundStoneFootstep);
         GameRegistry.registerBlock(MyBlock_1, "MyBlock_1");
-        LanguageRegistry.addName(MyBlock_1, "Crimsonate Ore"); 
+        LanguageRegistry.addName(MyBlock_1, "Crimsonate"); 
 		MinecraftForge.setBlockHarvestLevel(MyBlock_1, "pickaxe", 3);
 
  //  LOAD THE BLOCK 
-        MyBlock_2 = new MyBlock(2085, Material.grass, "MyBlock_2").setHardness(5.0F).setResistance(7.5F).setStepSound(Block.soundStoneFootstep);
+        MyBlock_2 = new MyBlock(2100, Material.grass, "MyBlock_2").setHardness(5.0F).setResistance(7.5F).setStepSound(Block.soundStoneFootstep);
         GameRegistry.registerBlock(MyBlock_2, "MyBlock_2");
         LanguageRegistry.addName(MyBlock_2, "Crimsified Grass"); 
 		MinecraftForge.setBlockHarvestLevel(MyBlock_2, "pickaxe", 1);
@@ -281,6 +295,8 @@ public class Main {
      //  LOAD BIOME
         MyBiome_1 = new MyBiome(30);
         GameRegistry.addBiome(MyBiome_1);
+        
+        
         
 //  REMOVE OTHER BIOMES
         GameRegistry.removeBiome(BiomeGenBase.beach);
@@ -379,6 +395,20 @@ public class Main {
         RenderingRegistry.registerEntityRenderingHandler(MyEntityWraith.class, new MyRenderWraith(new MyModelWraith(), 0.3F));
         ModLoader.addLocalization("entity.Corrupt Wraith.name", "Corrupt Wraith");
 	
+	
+	
+	  //  LOAD BIOME
+        MyCorruptionBiome_1 = new MyCorruptionBiome(31);
+        GameRegistry.addBiome(MyCorruptionBiome_1);
+        
+	
+	//	LOAD THE ACHIEVEMENTS
+		MyAchievement_1 = new Achievement(2001, "MyAchievement_1", -1, -1, MyItem_1, AchievementList.openInventory).registerAchievement();
+		MyAchievement_2 = new Achievement(2002, "MyAchievement_2", -2, -1, MyItem_4, AchievementList.openInventory).registerAchievement();
+		//	(id, "NameOfAchievement", x, y coordinates on Achievement map, icon, Required Achievement to unlock)
+		// 	For no Pre-required achievement, use "(Achievement)null"	
+        		
+
 	
 	
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
@@ -499,8 +529,6 @@ public class Main {
 
 
 
-//  SMELTING RECIPE
-        GameRegistry.addSmelting(MyBlock_3.blockID, (new ItemStack(Block.stone, 2)), 20);
 
 
 //  ITEM RECIPE         
@@ -567,7 +595,6 @@ public class Main {
             'S', MyItem_5,
         });
 
-
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
 	
@@ -579,7 +606,20 @@ public class Main {
      //  REGISTER THE ORE GENERATION 
     GameRegistry.registerWorldGenerator(new MyBlockGen());
         
+ //	CHANGE THE TEXT OF THE ACHIEVEMENTS	
+    	LanguageRegistry.instance().addStringLocalization("achievement.MyAchievement_1", "en_US", "Awesome thing");
+    	LanguageRegistry.instance().addStringLocalization("achievement.MyAchievement_1.desc", "en_US", "Congrats yo");
+    	LanguageRegistry.instance().addStringLocalization("achievement.MyAchievement_2", "en_US", "Awesome Thing2");
+    	LanguageRegistry.instance().addStringLocalization("achievement.MyAchievement_2.desc", "en_US", "Test one");
 
+  //  REGISTER PICKUP HANDLER
+        MyPickupHandler MyPickupHandler_1 = new MyPickupHandler();
+        GameRegistry.registerPickupHandler(MyPickupHandler_1);  
+         
+         
+             //  REGISTER CRAFTING HANDLER
+        MyCraftingHandler MyCraftingHandler_1 = new MyCraftingHandler();
+        GameRegistry.registerCraftingHandler(MyCraftingHandler_1);  
 
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	

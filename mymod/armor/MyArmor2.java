@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class MyArmor2 extends ItemArmor{
 
-    private String texturePath = "mymod:textures/armor/";
+    private String texturePath = "mymod:textures/armor2/";
     private String iconPath = "mymod:";
 
     public MyArmor2(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4, String myArmorName) {
@@ -28,22 +28,22 @@ public class MyArmor2 extends ItemArmor{
         {
         case 0:
             this.setUnlocalizedName("MyHelmet_2");
-            this.texturePath += myArmorName + "_3.png";
+            this.texturePath += myArmorName + "_1.png";
             this.iconPath += "MyHelmet_2";
             break;
         case 1:
             this.setUnlocalizedName("MyChest_2");
-            this.texturePath += myArmorName + "_3.png";
+            this.texturePath += myArmorName + "_1.png";
             this.iconPath += "MyChest_2";
             break;
         case 2:
             this.setUnlocalizedName("MyLeggings_2");
-            this.texturePath += myArmorName + "_4.png";
+            this.texturePath += myArmorName + "_2.png";
             this.iconPath += "MyLeggings_2";
             break;
         case 3:
             this.setUnlocalizedName("MyBoots_2");
-            this.texturePath += myArmorName + "_3.png";
+            this.texturePath += myArmorName + "_1.png";
             this.iconPath += "MyBoots_2";
             break;
         }
