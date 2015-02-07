@@ -15,8 +15,8 @@
     //  LOAD THE BLOCK 
         MyBlock_1 = new MyBlock(250, Material.rock, "MyBlock_1");
         GameRegistry.registerBlock(MyBlock_1, "MyBlock_1");
-        LanguageRegistry.addName(MyBlock_1, "Untitled"); 
-		MinecraftForge.setBlockHarvestLevel(MyBlock_1, "pickaxe", 1);
+        LanguageRegistry.addName(MyBlock_1, "My Awesome Block"); 
+		MinecraftForge.setBlockHarvestLevel(MyBlock_1, "pickaxe", 0);
 
 
 **********************************************************************

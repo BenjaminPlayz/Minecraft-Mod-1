@@ -3,7 +3,7 @@ package mymod;
 import java.awt.Color;
 
 import mymod.armor.MyArmor;
-import mymod.armor.MyArmor2;
+import mymod.armor.MyFleshArmor;
 import mymod.biome.MyBiome;
 import mymod.biome.MyCorruptionBiome;
 import mymod.blocks.MyBlock;
@@ -20,6 +20,9 @@ import mymod.items.MyItem;
 import mymod.items.MyPickaxe;
 import mymod.items.MySword;
 import mymod.items.MySword2;
+import mymod.projectiles.MyEntityProjectile;
+import mymod.projectiles.MyProjectile;
+import mymod.projectiles.MyRenderProjectile;
 import mymod.proxies.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -182,7 +185,7 @@ public class Main {
         public static Item MySword_3;
     
 
-//  DECLARE THE ARMOR
+//  DECLARE THE FLESH ARMOR
         public static Item MyHelmet_2;
         public static Item MyChest_2;
         public static Item MyLeggings_2;
@@ -199,6 +202,8 @@ public class Main {
     	public static Achievement MyAchievement_1;
     	public static Achievement MyAchievement_2;
 
+//  DECLARE THE ITEM
+        public static Item MyProjectile_1;
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
@@ -297,31 +302,7 @@ public class Main {
         GameRegistry.addBiome(MyBiome_1);
         
         
-        
-//  REMOVE OTHER BIOMES
-        GameRegistry.removeBiome(BiomeGenBase.beach);
-        GameRegistry.removeBiome(BiomeGenBase.desert);
-        GameRegistry.removeBiome(BiomeGenBase.desertHills);
-        GameRegistry.removeBiome(BiomeGenBase.desertHills);
-        GameRegistry.removeBiome(BiomeGenBase.extremeHills);
-        GameRegistry.removeBiome(BiomeGenBase.extremeHillsEdge);
-        GameRegistry.removeBiome(BiomeGenBase.forest);
-        GameRegistry.removeBiome(BiomeGenBase.forestHills);
-        GameRegistry.removeBiome(BiomeGenBase.frozenOcean);
-        GameRegistry.removeBiome(BiomeGenBase.frozenRiver);
-        GameRegistry.removeBiome(BiomeGenBase.iceMountains);
-        GameRegistry.removeBiome(BiomeGenBase.icePlains);
-        GameRegistry.removeBiome(BiomeGenBase.jungle);
-        GameRegistry.removeBiome(BiomeGenBase.jungleHills);
-        GameRegistry.removeBiome(BiomeGenBase.mushroomIsland);
-        GameRegistry.removeBiome(BiomeGenBase.ocean);
-        GameRegistry.removeBiome(BiomeGenBase.plains);
-        GameRegistry.removeBiome(BiomeGenBase.river);
-        GameRegistry.removeBiome(BiomeGenBase.swampland);
-        GameRegistry.removeBiome(BiomeGenBase.taiga);
-        GameRegistry.removeBiome(BiomeGenBase.taigaHills);           
 
-    
    
 	 //  REGISTER YOUR ENTITY
         EntityRegistry.registerGlobalEntityID(MyEntityZombie.class, "Face Gobler", EntityRegistry.findGlobalUniqueEntityId());
@@ -349,6 +330,20 @@ public class Main {
         LanguageRegistry.addName(MyItem_4, "Flesh Stick");  
     
 	
+	//  LOAD THE BOOMSTICK ITEM
+        MyProjectile_1 = new  MyProjectile(2101, " MyProjectile_1").setCreativeTab(CreativeTabs.tabMaterials);
+        GameRegistry.registerItem( MyProjectile_1, " MyProjectile_1");
+        LanguageRegistry.addName( MyProjectile_1, "The Boomstick");  
+        
+        
+         //   REGISTER THE PROJECTILE ENTITY
+         EntityRegistry.registerGlobalEntityID(MyEntityProjectile.class, "MyProjectile_1", 1);
+         EntityRegistry.registerModEntity(MyEntityProjectile.class, "MyProjectile_1", 1, this, 256, 1, true);
+         LanguageRegistry.instance().addStringLocalization("entity.modid.MyProjectile_1.name", "My Awesome Projectile");
+         RenderingRegistry.registerEntityRenderingHandler(MyEntityProjectile.class, new MyRenderProjectile(MyProjectile_1));
+         
+        
+	
 	 //  LOAD THE SWORD
         MySword_3 = new MySword(2093, MyToolMaterialFleshSword, "MySword_3");
         GameRegistry.registerItem(MySword_3, "MySword_3");
@@ -356,22 +351,22 @@ public class Main {
 
     
      //  LOAD HELMET 
-        MyHelmet_2 = new MyArmor2(2094, EnumArmorMaterial.IRON, 0, 0, "myarmor2");
+        MyHelmet_2 = new MyFleshArmor(2094, MyArmorMaterial_2, 0, 0, "myflesharmor1");
         GameRegistry.registerItem(MyHelmet_2, "MyHelmet_2");
         LanguageRegistry.addName(MyHelmet_2, "Flesh Helmet");      
     
 //  LOAD CHESTPLATE
-        MyChest_2 = new MyArmor2(2095, EnumArmorMaterial.IRON, 0, 1, "myarmor2");
+        MyChest_2 = new MyFleshArmor(2095, MyArmorMaterial_2, 0, 1, "myflesharmor1");
         GameRegistry.registerItem(MyChest_2, "MyChest_2");
         LanguageRegistry.addName(MyChest_2, "Flesh Chestplate");
 
 //  LOAD LEGGINGS    
-        MyLeggings_2 = new MyArmor2(2096, EnumArmorMaterial.IRON, 0, 2, "myarmor2");
+        MyLeggings_2 = new MyFleshArmor(2096, MyArmorMaterial_2, 0, 2, "myflesharmor1");
         GameRegistry.registerItem(MyLeggings_2, "MyLeggings_2");
         LanguageRegistry.addName(MyLeggings_2, "Flesh Legs");
 
 //  LOAD BOOTS   
-        MyBoots_2 = new MyArmor2(2097, EnumArmorMaterial.IRON, 0, 3, "myarmor2");
+        MyBoots_2 = new MyFleshArmor(2097, MyArmorMaterial_2, 0, 3, "myflesharmor1");
         GameRegistry.registerItem(MyBoots_2, "MyBoots_2");
         LanguageRegistry.addName(MyBoots_2, "Flesh Greaves");
     
@@ -530,16 +525,40 @@ public class Main {
 
 
 
+//  HELMET RECIPE   
+    GameRegistry.addRecipe(new ItemStack(MyHelmet_2, 1), new Object[]
+    {
+            "XXX",
+            "X X",
+        'X', MyItem_3,
+    });         
 
-//  ITEM RECIPE         
-        GameRegistry.addRecipe(new ItemStack(MyItem_3, 2), new Object[]
-        {
-                "SSS",
-                "SXS",
-                "SSS",
-            'S', MyItem_1,
-            'X', Block.beacon,
-        });
+//  CHESTPLATE RECIPE   
+    GameRegistry.addRecipe(new ItemStack(MyChest_2, 1), new Object[]
+    {
+            "X X",
+            "XXX",
+            "XXX",
+        'X', MyItem_3,
+    });         
+
+//  LEGGINGS RECIPE 
+    GameRegistry.addRecipe(new ItemStack(MyLeggings_2, 1), new Object[]
+    {
+            "XXX",
+            "X X",
+            "X X",
+        'X', MyItem_3,
+    });         
+
+//  BOOTS RECIPE    
+    GameRegistry.addRecipe(new ItemStack(MyBoots_2, 1), new Object[]
+    {
+            "X X",
+            "X X",
+        'X', MyItem_3,
+    });    
+
 
 
 
@@ -594,6 +613,20 @@ public class Main {
                 "SSS",
             'S', MyItem_5,
         });
+
+
+
+//  BOOMSTICK RECIPE        
+        GameRegistry.addRecipe(new ItemStack(MyProjectile_1, 4), new Object[]
+        {
+                "SSS",
+                "SXS",
+                "SSS",
+            'S', Block.tnt,
+            'X', Item.stick
+        });
+
+
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
