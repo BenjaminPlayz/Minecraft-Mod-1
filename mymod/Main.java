@@ -8,6 +8,9 @@ import mymod.biome.MyBiome;
 import mymod.biome.MyCorruptionBiome;
 import mymod.blocks.MyBlock;
 import mymod.blocks.MyBlockGen;
+import mymod.boss.wraithlord.MyEntityWraithlord;
+import mymod.boss.wraithlord.MyModelWraithlord;
+import mymod.boss.wraithlord.MyRenderWraithlord;
 import mymod.entity.wraith.MyEntityWraith;
 import mymod.entity.wraith.MyModelWraith;
 import mymod.entity.wraith.MyRenderWraith;
@@ -20,6 +23,8 @@ import mymod.items.MyItem;
 import mymod.items.MyPickaxe;
 import mymod.items.MySword;
 import mymod.items.MySword2;
+import mymod.items.MySword4;
+import mymod.items.MySword5;
 import mymod.projectiles.MyEntityProjectile;
 import mymod.projectiles.MyProjectile;
 import mymod.projectiles.MyRenderProjectile;
@@ -99,6 +104,14 @@ public class Main {
 
  //  DECLARE NEW TOOL MATERIAL
         public static EnumToolMaterial MyToolMaterialFleshSword = EnumHelper.addToolMaterial("FleshSword", 3, 10000, 8.0F, 14.0F, 10);
+
+
+//  DECLARE NEW TOOL MATERIAL
+        public static EnumToolMaterial MyToolMaterialUthoria = EnumHelper.addToolMaterial("Uthoria", 3, 10000, 8.0F, 17.0F, 0);
+
+
+//  DECLARE NEW TOOL MATERIAL
+        public static EnumToolMaterial MyToolMaterialCreative = EnumHelper.addToolMaterial("Creative", 3, 1000000000, 8.0F, 100000000.0F, 0);
 
 
 
@@ -185,6 +198,11 @@ public class Main {
         public static Item MySword_3;
     
 
+ //  DECLARE THE SWORD 
+        public static Item MySword_4;
+
+
+
 //  DECLARE THE FLESH ARMOR
         public static Item MyHelmet_2;
         public static Item MyChest_2;
@@ -204,6 +222,11 @@ public class Main {
 
 //  DECLARE THE ITEM
         public static Item MyProjectile_1;
+
+
+// DECLARE THE SWORD
+    public static Item MySword_5;
+
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
@@ -262,6 +285,19 @@ public class Main {
         MySword_2 = new MySword2(2024, MyToolMaterialCrimsonateSword, "MySword_2");
         GameRegistry.registerItem(MySword_2, "MySword_2");
         LanguageRegistry.addName(MySword_2, "Crimsonate Sword");  
+    
+    
+     
+    //  LOAD THE SWORD
+        MySword_4 = new MySword4(2102, MyToolMaterialUthoria, "MySword_4");
+        GameRegistry.registerItem(MySword_4, "MySword_4");
+        LanguageRegistry.addName(MySword_4, "Uthoria");
+    
+    
+    //  LOAD THE SWORD
+        MySword_5 = new MySword5(2103, MyToolMaterialCreative, "MySword_5");
+        GameRegistry.registerItem(MySword_5, "MySword_5");
+        LanguageRegistry.addName(MySword_5, "Insta Killer");
     
     
     
@@ -351,22 +387,22 @@ public class Main {
 
     
      //  LOAD HELMET 
-        MyHelmet_2 = new MyFleshArmor(2094, MyArmorMaterial_2, 0, 0, "myflesharmor1");
+        MyHelmet_2 = new MyFleshArmor(2094, MyArmorMaterial_2, 0, 0, "myflesharmor");
         GameRegistry.registerItem(MyHelmet_2, "MyHelmet_2");
         LanguageRegistry.addName(MyHelmet_2, "Flesh Helmet");      
     
 //  LOAD CHESTPLATE
-        MyChest_2 = new MyFleshArmor(2095, MyArmorMaterial_2, 0, 1, "myflesharmor1");
+        MyChest_2 = new MyFleshArmor(2095, MyArmorMaterial_2, 0, 1, "myflesharmor");
         GameRegistry.registerItem(MyChest_2, "MyChest_2");
         LanguageRegistry.addName(MyChest_2, "Flesh Chestplate");
 
 //  LOAD LEGGINGS    
-        MyLeggings_2 = new MyFleshArmor(2096, MyArmorMaterial_2, 0, 2, "myflesharmor1");
+        MyLeggings_2 = new MyFleshArmor(2096, MyArmorMaterial_2, 0, 2, "myflesharmor");
         GameRegistry.registerItem(MyLeggings_2, "MyLeggings_2");
         LanguageRegistry.addName(MyLeggings_2, "Flesh Legs");
 
 //  LOAD BOOTS   
-        MyBoots_2 = new MyFleshArmor(2097, MyArmorMaterial_2, 0, 3, "myflesharmor1");
+        MyBoots_2 = new MyFleshArmor(2097, MyArmorMaterial_2, 0, 3, "myflesharmor");
         GameRegistry.registerItem(MyBoots_2, "MyBoots_2");
         LanguageRegistry.addName(MyBoots_2, "Flesh Greaves");
     
@@ -389,6 +425,16 @@ public class Main {
         registerEntityEgg(MyEntityWraith.class, (new Color(255, 255, 255)).getRGB(), (new Color(0, 0, 0)).getRGB());
         RenderingRegistry.registerEntityRenderingHandler(MyEntityWraith.class, new MyRenderWraith(new MyModelWraith(), 0.3F));
         ModLoader.addLocalization("entity.Corrupt Wraith.name", "Corrupt Wraith");
+	
+	
+		 //  REGISTER YOUR ENTITY
+        EntityRegistry.registerGlobalEntityID(MyEntityWraithlord.class, "Wraith Lord", EntityRegistry.findGlobalUniqueEntityId());  
+        EntityRegistry.addSpawn(MyEntityWraithlord.class, 1, 1, 1, EnumCreatureType.monster, MyBiome_1);  
+        registerEntityEgg(MyEntityWraithlord.class, (new Color(255, 255, 255)).getRGB(), (new Color(0, 0, 0)).getRGB());
+        RenderingRegistry.registerEntityRenderingHandler(MyEntityWraithlord.class, new MyRenderWraithlord(new MyModelWraithlord(), 0.3F));
+        ModLoader.addLocalization("entity.Wraith Lord.name", "Wraith Lord");
+	
+	
 	
 	
 	
@@ -612,18 +658,6 @@ public class Main {
                 "SSS",
                 "SSS",
             'S', MyItem_5,
-        });
-
-
-
-//  BOOMSTICK RECIPE        
-        GameRegistry.addRecipe(new ItemStack(MyProjectile_1, 4), new Object[]
-        {
-                "SSS",
-                "SXS",
-                "SSS",
-            'S', Block.tnt,
-            'X', Item.stick
         });
 
 
