@@ -259,12 +259,18 @@ public class Main {
         GameRegistry.registerBlock(MyBlock_1, "MyBlock_1");
         LanguageRegistry.addName(MyBlock_1, "Crimsonate"); 
 		MinecraftForge.setBlockHarvestLevel(MyBlock_1, "pickaxe", 3);
-
- //  LOAD THE BLOCK 
-        MyBlock_2 = new MyBlock(2100, Material.grass, "MyBlock_2").setHardness(5.0F).setResistance(7.5F).setStepSound(Block.soundStoneFootstep);
+                                                                    /** Hardness is how long it takes to mine block, Resistance is how strong the block is to Explosions */     	
+//        MyBlock_2 = new MyBlock(251, Material.rock, "MyBlock_2").setLightValue(0.7586F).setHardness(10.5F).setResistance(14.5F).setStepSound(Block.soundStoneFootstep);
+        MyBlock_2 = new MyBlock(251, Material.grass, "MyBlock_2").setHardness(5.0F).setResistance(7.5F).setStepSound(Block.soundStoneFootstep);
         GameRegistry.registerBlock(MyBlock_2, "MyBlock_2");
         LanguageRegistry.addName(MyBlock_2, "Crimsified Grass"); 
 		MinecraftForge.setBlockHarvestLevel(MyBlock_2, "pickaxe", 1);
+
+ //  LOAD THE BLOCK 
+ //       MyBlock_2 = new MyBlock(2100, Material.grass, "MyBlock_2").setHardness(5.0F).setResistance(7.5F).setStepSound(Block.soundStoneFootstep);
+ //       GameRegistry.registerBlock(MyBlock_2, "MyBlock_2");
+ //       LanguageRegistry.addName(MyBlock_2, "Crimsified Grass"); 
+ //		MinecraftForge.setBlockHarvestLevel(MyBlock_2, "pickaxe", 1);
 
  //  LOAD THE BLOCK 
         MyBlock_3 = new MyBlock(2080, Material.grass, "MyBlock_3");
@@ -336,6 +342,33 @@ public class Main {
      //  LOAD BIOME
         MyBiome_1 = new MyBiome(30);
         GameRegistry.addBiome(MyBiome_1);
+        
+        
+        
+         // REMOVE DEM OTHER BIOMES        
+         GameRegistry.removeBiome(BiomeGenBase.beach);
+        GameRegistry.removeBiome(BiomeGenBase.desert);
+        GameRegistry.removeBiome(BiomeGenBase.desertHills);
+        GameRegistry.removeBiome(BiomeGenBase.desertHills);
+        GameRegistry.removeBiome(BiomeGenBase.extremeHills);
+        GameRegistry.removeBiome(BiomeGenBase.extremeHillsEdge);
+        GameRegistry.removeBiome(BiomeGenBase.forest);
+        GameRegistry.removeBiome(BiomeGenBase.forestHills);
+        GameRegistry.removeBiome(BiomeGenBase.frozenOcean);
+        GameRegistry.removeBiome(BiomeGenBase.frozenRiver);
+        GameRegistry.removeBiome(BiomeGenBase.iceMountains);
+        GameRegistry.removeBiome(BiomeGenBase.icePlains);
+        GameRegistry.removeBiome(BiomeGenBase.jungle);
+        GameRegistry.removeBiome(BiomeGenBase.jungleHills);
+        GameRegistry.removeBiome(BiomeGenBase.mushroomIsland);
+        GameRegistry.removeBiome(BiomeGenBase.ocean);
+        GameRegistry.removeBiome(BiomeGenBase.plains);
+        GameRegistry.removeBiome(BiomeGenBase.river);
+        GameRegistry.removeBiome(BiomeGenBase.swampland);
+        GameRegistry.removeBiome(BiomeGenBase.taiga);
+        GameRegistry.removeBiome(BiomeGenBase.taigaHills);           
+
+        
         
         
 

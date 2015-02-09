@@ -16,8 +16,8 @@ public class MyCorruptionBiome extends BiomeGenBase
         
         this.setBiomeName("Corruption");
         
-        this.topBlock = (byte)Block.cactus.blockID;
-        this.fillerBlock = (byte)Block.sand.blockID;
+        this.topBlock = (byte)Main.MyBlock_2.blockID;
+        this.fillerBlock = (byte)Block.beacon.blockID;
         
         this.spawnableCreatureList.add(new SpawnListEntry(EntityMagmaCube.class, 1, 100, 150));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPigZombie.class, 10, 20, 25));

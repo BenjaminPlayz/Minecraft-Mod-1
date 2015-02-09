@@ -32,7 +32,7 @@ public class MySword3 extends ItemSword {
 
  public void onCreated(ItemStack item, World world, EntityPlayer player)
         {
-            item.addEnchantment(Enchantment.knockback, 5);
+            item.addEnchantment(Enchantment.looting, 5);
         }
 
 }
