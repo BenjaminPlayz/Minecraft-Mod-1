@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import mymod.armor.MyArmor;
 import mymod.armor.MyFleshArmor;
+import mymod.armor.MyLapisArmor;
 import mymod.biome.MyBiome;
 import mymod.biome.MyCorruptionBiome;
 import mymod.blocks.MyBlock;
@@ -133,6 +134,9 @@ public class Main {
         public static Item MyFood_1;
 
 
+//  DECLARE THE FOOD
+        public static Item MyFood_2;
+
     //  DECLARE THE ARMOR
         public static Item MyHelmet_1;
         public static Item MyChest_1;
@@ -208,6 +212,13 @@ public class Main {
         public static Item MyChest_2;
         public static Item MyLeggings_2;
         public static Item MyBoots_2;
+
+
+//  DECLARE THE LAPIS ARMOR
+        public static Item MyHelmet_3;
+        public static Item MyChest_3;
+        public static Item MyLeggings_3;
+        public static Item MyBoots_3;
 
 
 //  DECLARE THE ITEM
@@ -318,6 +329,13 @@ public class Main {
         GameRegistry.registerItem(MyFood_1, "MyFood_1");
         LanguageRegistry.addName(MyFood_1, "Marshmallow"); 
     
+         //  LOAD THE FOOD
+                          /** First Vaule is HealPoints, Then Saturation Value, Then the last is True or False and it is saying IsWolfsFavoriteFood. */     
+        MyFood_2 = new MyFood(2104, 6, 4.5F, true, "MyFood_2").setPotionEffect(Potion.resistance.id, 45, 8, 0.1F).setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(64);
+        GameRegistry.registerItem(MyFood_2, "MyFood_2");
+        LanguageRegistry.addName(MyFood_2, "Gobler Meat"); 
+    
+    
     
     //  LOAD HELMET 
         MyHelmet_1 = new MyArmor(2060, MyArmorMaterial_1, 0, 0, "myarmor").setCreativeTab(CreativeTabs.tabCombat);
@@ -343,31 +361,6 @@ public class Main {
         MyBiome_1 = new MyBiome(30);
         GameRegistry.addBiome(MyBiome_1);
         
-        
-        
-         // REMOVE DEM OTHER BIOMES        
-         GameRegistry.removeBiome(BiomeGenBase.beach);
-        GameRegistry.removeBiome(BiomeGenBase.desert);
-        GameRegistry.removeBiome(BiomeGenBase.desertHills);
-        GameRegistry.removeBiome(BiomeGenBase.desertHills);
-        GameRegistry.removeBiome(BiomeGenBase.extremeHills);
-        GameRegistry.removeBiome(BiomeGenBase.extremeHillsEdge);
-        GameRegistry.removeBiome(BiomeGenBase.forest);
-        GameRegistry.removeBiome(BiomeGenBase.forestHills);
-        GameRegistry.removeBiome(BiomeGenBase.frozenOcean);
-        GameRegistry.removeBiome(BiomeGenBase.frozenRiver);
-        GameRegistry.removeBiome(BiomeGenBase.iceMountains);
-        GameRegistry.removeBiome(BiomeGenBase.icePlains);
-        GameRegistry.removeBiome(BiomeGenBase.jungle);
-        GameRegistry.removeBiome(BiomeGenBase.jungleHills);
-        GameRegistry.removeBiome(BiomeGenBase.mushroomIsland);
-        GameRegistry.removeBiome(BiomeGenBase.ocean);
-        GameRegistry.removeBiome(BiomeGenBase.plains);
-        GameRegistry.removeBiome(BiomeGenBase.river);
-        GameRegistry.removeBiome(BiomeGenBase.swampland);
-        GameRegistry.removeBiome(BiomeGenBase.taiga);
-        GameRegistry.removeBiome(BiomeGenBase.taigaHills);           
-
         
         
         
@@ -438,6 +431,30 @@ public class Main {
         MyBoots_2 = new MyFleshArmor(2097, MyArmorMaterial_2, 0, 3, "myflesharmor");
         GameRegistry.registerItem(MyBoots_2, "MyBoots_2");
         LanguageRegistry.addName(MyBoots_2, "Flesh Greaves");
+    
+    
+        //  LOAD HELMET 
+        MyHelmet_3 = new MyLapisArmor(2105, MyArmorMaterial_2, 0, 0, "mylapisarmor");
+        GameRegistry.registerItem(MyHelmet_3, "MyHelmet_3");
+        LanguageRegistry.addName(MyHelmet_3, "Lapis Helmet");      
+    
+//  LOAD CHESTPLATE
+        MyChest_3 = new MyLapisArmor(2106, MyArmorMaterial_2, 0, 1, "mylapisarmor");
+        GameRegistry.registerItem(MyChest_3, "MyChest_3");
+        LanguageRegistry.addName(MyChest_3, "Lapis Chestplate");
+
+//  LOAD LEGGINGS    
+        MyLeggings_3 = new MyLapisArmor(2107, MyArmorMaterial_2, 0, 2, "mylapisarmor");
+        GameRegistry.registerItem(MyLeggings_3, "MyLeggings_3");
+        LanguageRegistry.addName(MyLeggings_3, "Lapis Legs");
+
+//  LOAD BOOTS   
+        MyBoots_3 = new MyLapisArmor(2108, MyArmorMaterial_2, 0, 3, "mylapisarmor");
+        GameRegistry.registerItem(MyBoots_3, "MyBoots_3");
+        LanguageRegistry.addName(MyBoots_3, "Lapis Boots");
+    
+    
+    
     
 	//  LOAD THE ITEM
         MyItem_5 = new MyItem(2098, "MyItem_5").setCreativeTab(CreativeTabs.tabMaterials).setMaxStackSize(64);
@@ -637,6 +654,44 @@ public class Main {
             "X X",
         'X', MyItem_3,
     });    
+
+
+
+
+//  HELMET RECIPE   
+    GameRegistry.addRecipe(new ItemStack(MyHelmet_3, 1), new Object[]
+    {
+            "XXX",
+            "X X",
+        'X', Block.blockLapis,
+    });         
+
+//  CHESTPLATE RECIPE   
+    GameRegistry.addRecipe(new ItemStack(MyChest_3, 1), new Object[]
+    {
+            "X X",
+            "XXX",
+            "XXX",
+        'X', Block.blockLapis,
+    });         
+
+//  LEGGINGS RECIPE 
+    GameRegistry.addRecipe(new ItemStack(MyLeggings_3, 1), new Object[]
+    {
+            "XXX",
+            "X X",
+            "X X",
+        'X', Block.blockLapis,
+    });         
+
+//  BOOTS RECIPE    
+    GameRegistry.addRecipe(new ItemStack(MyBoots_3, 1), new Object[]
+    {
+            "X X",
+            "X X",
+        'X', Block.blockLapis,
+    });    
+
 
 
 

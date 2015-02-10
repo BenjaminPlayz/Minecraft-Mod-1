@@ -193,7 +193,7 @@ public class MyEntityZombie extends EntityZombie
 
         for (k = 0; k < j; ++k)
         {
-            this.dropItem(Item.rottenFlesh.itemID, 1);
+            this.dropItem(Main.MyFood_2.itemID, 1);
         }
 
         j = this.rand.nextInt(2 + par2);
