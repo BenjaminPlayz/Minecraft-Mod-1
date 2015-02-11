@@ -153,6 +153,12 @@ public class Main {
         public static EnumArmorMaterial MyArmorMaterial_2 = EnumHelper.addArmorMaterial("FleshArmor", 6000, new int[]{12, 16, 14, 10}, 100);
                                  
                                  
+                                                        //  DECLARE THE ARMOR MATERIAL
+  /** maxDamageFactor, damageReductionAmountArray, enchantability */
+        public static EnumArmorMaterial MyArmorMaterial_3 = EnumHelper.addArmorMaterial("LapisArmor", 40, new int[]{5, 9, 5, 5}, 100);
+                                        
+                                 
+                                 
                                  
 //  DECLARE THE BIOME
         public static  BiomeGenBase MyBiome_1;  
@@ -434,22 +440,22 @@ public class Main {
     
     
         //  LOAD HELMET 
-        MyHelmet_3 = new MyLapisArmor(2105, MyArmorMaterial_2, 0, 0, "mylapisarmor");
+        MyHelmet_3 = new MyLapisArmor(2105, MyArmorMaterial_3, 0, 0, "mylapisarmor");
         GameRegistry.registerItem(MyHelmet_3, "MyHelmet_3");
         LanguageRegistry.addName(MyHelmet_3, "Lapis Helmet");      
     
 //  LOAD CHESTPLATE
-        MyChest_3 = new MyLapisArmor(2106, MyArmorMaterial_2, 0, 1, "mylapisarmor");
+        MyChest_3 = new MyLapisArmor(2106, MyArmorMaterial_3, 0, 1, "mylapisarmor");
         GameRegistry.registerItem(MyChest_3, "MyChest_3");
         LanguageRegistry.addName(MyChest_3, "Lapis Chestplate");
 
 //  LOAD LEGGINGS    
-        MyLeggings_3 = new MyLapisArmor(2107, MyArmorMaterial_2, 0, 2, "mylapisarmor");
+        MyLeggings_3 = new MyLapisArmor(2107, MyArmorMaterial_3, 0, 2, "mylapisarmor");
         GameRegistry.registerItem(MyLeggings_3, "MyLeggings_3");
         LanguageRegistry.addName(MyLeggings_3, "Lapis Legs");
 
 //  LOAD BOOTS   
-        MyBoots_3 = new MyLapisArmor(2108, MyArmorMaterial_2, 0, 3, "mylapisarmor");
+        MyBoots_3 = new MyLapisArmor(2108, MyArmorMaterial_3, 0, 3, "mylapisarmor");
         GameRegistry.registerItem(MyBoots_3, "MyBoots_3");
         LanguageRegistry.addName(MyBoots_3, "Lapis Boots");
     

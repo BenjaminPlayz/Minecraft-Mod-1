@@ -27,24 +27,24 @@ public class MyLapisArmor extends ItemArmor{
         switch(par4)
         {
         case 0:
-            this.setUnlocalizedName("MyHelmet_2");
+            this.setUnlocalizedName("MyHelmet_3");
             this.texturePath += myArmorName + "_1.png";
-            this.iconPath += "MyHelmet_2";
+            this.iconPath += "MyHelmet_3";
             break;
         case 1:
-            this.setUnlocalizedName("MyChest_2");
+            this.setUnlocalizedName("MyChest_3");
             this.texturePath += myArmorName + "_1.png";
-            this.iconPath += "MyChest_2";
+            this.iconPath += "MyChest_3";
             break;
         case 2:
-            this.setUnlocalizedName("MyLeggings_2");
+            this.setUnlocalizedName("MyLeggings_3");
             this.texturePath += myArmorName + "_2.png";
-            this.iconPath += "MyLeggings_2";
+            this.iconPath += "MyLeggings_3";
             break;
         case 3:
-            this.setUnlocalizedName("MyBoots_2");
+            this.setUnlocalizedName("MyBoots_3");
             this.texturePath += myArmorName + "_1.png";
-            this.iconPath += "MyBoots_2";
+            this.iconPath += "MyBoots_3";
             break;
         }
     }
