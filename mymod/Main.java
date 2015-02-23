@@ -19,6 +19,7 @@ import mymod.entity.zombie.MyEntityZombie;
 import mymod.entity.zombie.MyRenderZombie;
 import mymod.handlers.MyCraftingHandler;
 import mymod.handlers.MyPickupHandler;
+import mymod.items.MyAxe;
 import mymod.items.MyFood;
 import mymod.items.MyItem;
 import mymod.items.MyPickaxe;
@@ -62,7 +63,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 
 /* 	MOD INFO */
-	@Mod( modid = "mymod", name = "Bens Mod", version = "1.0")
+	@Mod( modid = "mymod", name = "The Battle of The Biome RPG", version = "1.3.5")
 	@NetworkMod(clientSideRequired=true, serverSideRequired=false)	
 
 
@@ -77,107 +78,59 @@ public class Main {
  * DECLARATION SECTION 
  * *********************************************************** */
 
-//  DECLARE THE SWORD 
-        public static Item MySword_1;
-
-  //  DECLARE THE PICKAXE 
-        public static Item MyPickaxe_1;
-        
-        //  DECLARE THE PICKAXE 
-        public static Item MyPickaxe_2;
-        
-
- //  DECLARE NEW TOOL MATERIAL
                                      /** 1st is Harvest Level, 2nd is Durability, 3rd is Mining Speed, 4th is Attack Damage(Hearts not Hit points) And fifth is Enchantability */
         public static EnumToolMaterial MyToolMaterial = EnumHelper.addToolMaterial("Ice Shard", 3, 2000, 10.0F, 3.0F, 22);
 
- //  DECLARE NEW TOOL MATERIAL
+
         public static EnumToolMaterial MyToolMaterialCrimsonatePickaxe = EnumHelper.addToolMaterial("Crimsonate Pickaxe", 3, 4683, 23.0F, 3.0F, 22);
         
-        
 
- //  DECLARE NEW TOOL MATERIAL
+
         public static EnumToolMaterial MyToolMaterialCrimsonateSword = EnumHelper.addToolMaterial("Crimsonate Sword", 3, 4864, 8.0F, 7.0F, 22);
 
 
-//  DECLARE NEW TOOL MATERIAL
+
         public static EnumToolMaterial MyToolMaterialFleshPick = EnumHelper.addToolMaterial("FleshPickaxe", 3, 9366, 28.5F, 3.0F, 40);
 
- //  DECLARE NEW TOOL MATERIAL
+
         public static EnumToolMaterial MyToolMaterialFleshSword = EnumHelper.addToolMaterial("FleshSword", 3, 10000, 8.0F, 14.0F, 10);
 
 
-//  DECLARE NEW TOOL MATERIAL
+
         public static EnumToolMaterial MyToolMaterialUthoria = EnumHelper.addToolMaterial("Uthoria", 3, 10000, 8.0F, 17.0F, 0);
 
 
-//  DECLARE NEW TOOL MATERIAL
+
         public static EnumToolMaterial MyToolMaterialCreative = EnumHelper.addToolMaterial("Creative", 3, 1000000000, 8.0F, 100000000.0F, 0);
 
 
 
- //  DECLARE THE BLOCK
-        public static Block MyBlock_1;
 
- //  DECLARE THE ITEM
-        public static Item MyItem_1;
-    
-    
-    //  DECLARE THE SWORD 
-        public static Item MySword_2;
-
-//  DECLARE THE ITEM
-        public static Item MyItem_2;
-
-
-    //  DECLARE THE FOOD
-        public static Item MyFood_1;
-
-
-//  DECLARE THE FOOD
-        public static Item MyFood_2;
-
-    //  DECLARE THE ARMOR
-        public static Item MyHelmet_1;
-        public static Item MyChest_1;
-        public static Item MyLeggings_1;
-        public static Item MyBoots_1;
-
-  //  DECLARE THE ARMOR MATERIAL
   /** maxDamageFactor, damageReductionAmountArray, enchantability */
         public static EnumArmorMaterial MyArmorMaterial_1 = EnumHelper.addArmorMaterial("CrimsonateArmor", 4350, new int[]{10, 10, 10, 8}, 100);
                                  
                                  
-                                 //  DECLARE THE ARMOR MATERIAL
+
   /** maxDamageFactor, damageReductionAmountArray, enchantability */
         public static EnumArmorMaterial MyArmorMaterial_2 = EnumHelper.addArmorMaterial("FleshArmor", 6000, new int[]{12, 16, 14, 10}, 100);
                                  
                                  
-                                                        //  DECLARE THE ARMOR MATERIAL
+
   /** maxDamageFactor, damageReductionAmountArray, enchantability */
         public static EnumArmorMaterial MyArmorMaterial_3 = EnumHelper.addArmorMaterial("LapisArmor", 40, new int[]{5, 9, 5, 5}, 100);
                                         
                                  
                                  
-                                 
-//  DECLARE THE BIOME
+                                
+        // BIOME AREA
         public static  BiomeGenBase MyBiome_1;  
 
-//  DECLARE THE BIOME
         public static  BiomeGenBase MyCorruptionBiome_1;  
 
 
-//  DECLARE THE BLOCK
-        public static Block MyBlock_2;
-
- // DECLARE THE BLOCK
-        public static Block MyBlock_3;
-
-
-//  DECLARE THE MOD ID
         static int MyEntityID = 300;
     
-    //  SEARCH FOR UNIQUE ID    
+
         public static int getUniqueEntityId() {
             do {
                 MyEntityID++;
@@ -186,65 +139,76 @@ public class Main {
             return MyEntityID++;
         }
     
-    //  DECLARE A NEW EGG
+
         public static void registerEntityEgg(Class <? extends Entity> entity, int primaryColor, int secondaryColor) {
             int id = getUniqueEntityId();
             EntityList.IDtoClassMapping.put(id, entity);
             EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
         }
 
- //  DECLARE THE ITEM
-        public static Item MyItem_3;
 
 
-//  DECLARE THE PICKAXE 
-        public static Item MyPickaxe_3;
-      
+        // ACHIEVMENT AREA
+    	public static Achievement MyAchievement_1;
+    	public static Achievement MyAchievement_2;
 
-  //  DECLARE THE ITEM
-        public static Item MyItem_4;
-    
- //  DECLARE THE SWORD 
+
+
+    	// Sorry Projectile TBH there will only be one of you
+        public static Item MyProjectile_1;
+
+        // SWORD AREA
+        public static Item MySword_1;
+        public static Item MySword_2;        
         public static Item MySword_3;
-    
-
- //  DECLARE THE SWORD 
         public static Item MySword_4;
-
-
-
-//  DECLARE THE FLESH ARMOR
+        public static Item MySword_5;
+            
+            
+        // BLOCK AREA
+        public static Block MyBlock_1;
+        public static Block MyBlock_2;
+        public static Block MyBlock_3;
+        public static Block MyBlock_4;
+   
+        
+        // ITEM AREA
+        public static Item MyItem_1;
+        public static Item MyItem_2;        
+        public static Item MyItem_3;
+        public static Item MyItem_4;
+        public static Item MyItem_5;
+        public static Item MyItem_6;   
+   
+        // PICKAXE AREA
+        public static Item MyPickaxe_1;
+        public static Item MyPickaxe_2;        
+        public static Item MyPickaxe_3;
+   
+        // ARMOR AREA
+        
+        public static Item MyHelmet_1;
+        public static Item MyChest_1;
+        public static Item MyLeggings_1;
+        public static Item MyBoots_1;
+        
         public static Item MyHelmet_2;
         public static Item MyChest_2;
         public static Item MyLeggings_2;
         public static Item MyBoots_2;
-
-
-//  DECLARE THE LAPIS ARMOR
+        
         public static Item MyHelmet_3;
         public static Item MyChest_3;
         public static Item MyLeggings_3;
         public static Item MyBoots_3;
-
-
-//  DECLARE THE ITEM
-        public static Item MyItem_5;
-
-//  DECLARE THE ITEM
-        public static Item MyItem_6;
-
-   //	DECLARE THE NEW ACHIEVEMENTS	
-    	public static Achievement MyAchievement_1;
-    	public static Achievement MyAchievement_2;
-
-//  DECLARE THE ITEM
-        public static Item MyProjectile_1;
-
-
-// DECLARE THE SWORD
-    public static Item MySword_5;
-
-
+   
+        
+        // FOOD AREA
+        public static Item MyFood_1;
+        public static Item MyFood_2;
+   
+        // AXES AREA
+        public static Item MyAxe_1;
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
 
@@ -277,17 +241,11 @@ public class Main {
         LanguageRegistry.addName(MyBlock_1, "Crimsonate"); 
 		MinecraftForge.setBlockHarvestLevel(MyBlock_1, "pickaxe", 3);
                                                                     /** Hardness is how long it takes to mine block, Resistance is how strong the block is to Explosions */     	
-//        MyBlock_2 = new MyBlock(251, Material.rock, "MyBlock_2").setLightValue(0.7586F).setHardness(10.5F).setResistance(14.5F).setStepSound(Block.soundStoneFootstep);
         MyBlock_2 = new MyBlock(251, Material.grass, "MyBlock_2").setHardness(5.0F).setResistance(7.5F).setStepSound(Block.soundStoneFootstep);
         GameRegistry.registerBlock(MyBlock_2, "MyBlock_2");
         LanguageRegistry.addName(MyBlock_2, "Crimsified Grass"); 
 		MinecraftForge.setBlockHarvestLevel(MyBlock_2, "pickaxe", 1);
 
- //  LOAD THE BLOCK 
- //       MyBlock_2 = new MyBlock(2100, Material.grass, "MyBlock_2").setHardness(5.0F).setResistance(7.5F).setStepSound(Block.soundStoneFootstep);
- //       GameRegistry.registerBlock(MyBlock_2, "MyBlock_2");
- //       LanguageRegistry.addName(MyBlock_2, "Crimsified Grass"); 
- //		MinecraftForge.setBlockHarvestLevel(MyBlock_2, "pickaxe", 1);
 
  //  LOAD THE BLOCK 
         MyBlock_3 = new MyBlock(2080, Material.grass, "MyBlock_3");
@@ -295,6 +253,11 @@ public class Main {
         LanguageRegistry.addName(MyBlock_3, "Crimsified Stone"); 
 		MinecraftForge.setBlockHarvestLevel(MyBlock_3, "pickaxe", 1);
 
+ //  LOAD THE BLOCK 
+        MyBlock_4 = new MyBlock(252, Material.grass, "MyBlock_4").setHardness(0.6F).setStepSound(Block.soundGrassFootstep);
+        GameRegistry.registerBlock(MyBlock_4, "MyBlock_4");
+        LanguageRegistry.addName(MyBlock_4, "Corrupt Grass"); 
+		MinecraftForge.setBlockHarvestLevel(MyBlock_4, "shovel", 1);
 
 
 
@@ -308,6 +271,12 @@ public class Main {
         MySword_2 = new MySword2(2024, MyToolMaterialCrimsonateSword, "MySword_2");
         GameRegistry.registerItem(MySword_2, "MySword_2");
         LanguageRegistry.addName(MySword_2, "Crimsonate Sword");  
+    
+    
+     //  LOAD THE AXE
+        MyAxe_1 = new MyAxe(2100, MyToolMaterialCrimsonatePickaxe, "MyAxe_1");
+        GameRegistry.registerItem(MyAxe_1, "MyAxe_1");
+        LanguageRegistry.addName(MyAxe_1, "Crimsonate Axe");  
     
     
      
@@ -367,9 +336,10 @@ public class Main {
         MyBiome_1 = new MyBiome(30);
         GameRegistry.addBiome(MyBiome_1);
         
-        
-        
-        
+	
+	  //  LOAD BIOME
+        MyCorruptionBiome_1 = new MyCorruptionBiome(31);
+        GameRegistry.addBiome(MyCorruptionBiome_1);
 
    
 	 //  REGISTER YOUR ENTITY
@@ -477,7 +447,7 @@ public class Main {
 	
 	 //  REGISTER YOUR ENTITY
         EntityRegistry.registerGlobalEntityID(MyEntityWraith.class, "Corrupt Wraith", EntityRegistry.findGlobalUniqueEntityId());  
-        EntityRegistry.addSpawn(MyEntityWraith.class, 25, 5, 10, EnumCreatureType.monster, MyBiome_1);  
+        EntityRegistry.addSpawn(MyEntityWraith.class, 1, 0, 0, EnumCreatureType.monster, MyCorruptionBiome_1);  
         registerEntityEgg(MyEntityWraith.class, (new Color(255, 255, 255)).getRGB(), (new Color(0, 0, 0)).getRGB());
         RenderingRegistry.registerEntityRenderingHandler(MyEntityWraith.class, new MyRenderWraith(new MyModelWraith(), 0.3F));
         ModLoader.addLocalization("entity.Corrupt Wraith.name", "Corrupt Wraith");
@@ -493,10 +463,6 @@ public class Main {
 	
 	
 	
-	
-	  //  LOAD BIOME
-        MyCorruptionBiome_1 = new MyCorruptionBiome(31);
-        GameRegistry.addBiome(MyCorruptionBiome_1);
         
 	
 	//	LOAD THE ACHIEVEMENTS
@@ -553,9 +519,18 @@ public class Main {
             
         }); 
 
- //  SMELTING RECIPE
-        GameRegistry.addSmelting(MyBlock_1.blockID, (new ItemStack(MyItem_1, 2)), 10);
         		
+        	    		
+         //  ITEM RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyItem_3, 3), new Object[]
+        {
+                "XXX",
+                "XSX",
+                "XXX",
+            'S', Block.beacon,
+            'X', MyItem_1,
+        });
+	
         		
         		
         		
@@ -753,6 +728,19 @@ public class Main {
                 "SSS",
             'S', MyItem_5,
         });
+
+
+//  CRIMSONATE AXE RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyAxe_1, 1), new Object[]
+        {
+                "SS",
+                "SX",
+                " X",
+            'S', MyItem_1,
+            'X', MyItem_2,
+        });
+
+
 
 
 
