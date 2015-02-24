@@ -20,6 +20,7 @@ import mymod.entity.zombie.MyRenderZombie;
 import mymod.handlers.MyCraftingHandler;
 import mymod.handlers.MyPickupHandler;
 import mymod.items.MyAxe;
+import mymod.items.MyBow;
 import mymod.items.MyFood;
 import mymod.items.MyItem;
 import mymod.items.MyPickaxe;
@@ -209,6 +210,10 @@ public class Main {
    
         // AXES AREA
         public static Item MyAxe_1;
+        
+        // BOW AREA
+        public static Item MyBow_1;
+        
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
 
@@ -332,13 +337,14 @@ public class Main {
         GameRegistry.registerItem(MyAxe_1, "MyAxe_1");
         LanguageRegistry.addName(MyAxe_1, "Crimsonate Axe");  
     
-    
-     
-    
-    
-    
-    
-    
+  
+        // BOW AREA
+  
+        MyBow_1 = new MyBow(2109);
+        GameRegistry.registerItem(MyBow_1, "MyBow_1");
+        LanguageRegistry.addName(MyBow_1, "Crimsonate bow");  
+  
+  
     
      // FOOD AREA
                           /** First Vaule is HealPoints, Then Saturation Value, Then the last is True or False and it is saying IsWolfsFavoriteFood. */     

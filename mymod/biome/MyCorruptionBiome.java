@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySilverfish;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityMooshroom;    
@@ -24,7 +25,7 @@ public class MyCorruptionBiome extends BiomeGenBase
         this.fillerBlock = (byte)Block.glass.blockID;
         
         this.spawnableCreatureList.add(new SpawnListEntry(EntitySlime.class, 1, 100, 150));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntitySilverfish.class, 10, 5, 10));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntitySkeleton.class, 10, 15, 20));
         
         this.setMinMaxHeight(1.0F, 1.5F);
         this.setTemperatureRainfall(1.5F, 0.2F);
