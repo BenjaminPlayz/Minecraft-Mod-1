@@ -8,6 +8,7 @@ import mymod.armor.MyLapisArmor;
 import mymod.biome.MyBiome;
 import mymod.biome.MyCorruptionBiome;
 import mymod.biome.MyFlatBiome;
+import mymod.biome.MyHugeTreeBiome;
 import mymod.blocks.MyBlock;
 import mymod.blocks.MyBlock5;
 import mymod.blocks.MyBlockGen;
@@ -136,6 +137,7 @@ public class Main {
 
         public static  BiomeGenBase MyFlatBiome_1;
 
+        public static  BiomeGenBase MyHugeTreeBiome_1;
 
 
         static int MyEntityID = 300;
@@ -411,12 +413,12 @@ public class Main {
        
        
                                                /** First Vaule is HealPoints, Then Saturation Value, Then the last is True or False and it is saying IsWolfsFavoriteFood. */     
-        MyFood_7 = new MyFood(2115, 0, 0.0F, false, "MyFood_7").setPotionEffect(Potion.moveSpeed.id, 500, 5, 1.0F).setAlwaysEdible().setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(64);
+        MyFood_7 = new MyFood(2115, 0, 0.0F, false, "MyFood_7").setPotionEffect(Potion.moveSpeed.id, 200, 5, 1.0F).setAlwaysEdible().setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(64);
         GameRegistry.registerItem(MyFood_7, "MyFood_7");
         LanguageRegistry.addName(MyFood_7, "Coffee");
        
        
-          MyFood_8 = new MyFood(2116, 0, 0.0F, false, "MyFood_8").setAlwaysEdible().setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(16);
+        MyFood_8 = new MyFood(2116, 0, 0.0F, false, "MyFood_8").setAlwaysEdible().setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(16);
         GameRegistry.registerItem(MyFood_8, "MyFood_8");
         LanguageRegistry.addName(MyFood_8, "Coffee Bean");
        
@@ -491,6 +493,8 @@ public class Main {
         GameRegistry.addBiome(MyFlatBiome_1);
         
         
+         MyHugeTreeBiome_1 = new MyHugeTreeBiome(33);
+        GameRegistry.addBiome(MyHugeTreeBiome_1);
         
 
         // ENTITY AREA MOBS
@@ -559,7 +563,8 @@ public class Main {
         GameRegistry.removeBiome(BiomeGenBase.swampland);
         GameRegistry.removeBiome(BiomeGenBase.taiga);
         GameRegistry.removeBiome(BiomeGenBase.taigaHills); 
-          
+        GameRegistry.removeBiome(MyBiome_1);  
+        GameRegistry.removeBiome(MyCorruptionBiome_1);
 
         		
         		
@@ -890,7 +895,7 @@ public class Main {
                 "S",
                 "X",
             'S', Item.bucketEmpty,
-            'X', Block.cocoaPlant,
+            'X', MyFood_8,
         });
 
 
