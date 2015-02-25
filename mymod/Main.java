@@ -231,8 +231,8 @@ public class Main {
         public static Item MyFood_7;
         public static Item MyFood_8;
         public static Item MyFood_9;
-   
-   
+        public static Item MyFood_10;
+        public static Item MyFood_11;
    
         // AXES AREA
         public static Item MyAxe_1;
@@ -450,6 +450,13 @@ public class Main {
         MyFood_9 = new MyFood(2117, 0, 0.0F, false, "MyFood_9").setPotionEffect(Potion.digSpeed.id, 200, 1, 1.0F).setAlwaysEdible().setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(16);
         GameRegistry.registerItem(MyFood_9, "MyFood_9");
         LanguageRegistry.addName(MyFood_9, "Latte");
+    
+    
+        MyFood_10 = new MyFood(2119, 0, 0.0F, false, "MyFood_10").setPotionEffect(Potion.moveSpeed.id, 200, 10, 1.0F).setAlwaysEdible().setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(16);
+        GameRegistry.registerItem(MyFood_10, "MyFood_10");
+        LanguageRegistry.addName(MyFood_10, "Uber food (Creative Only)");
+
+    
     
     //  ARMOR AREA 
         MyHelmet_1 = new MyArmor(2060, MyArmorMaterial_1, 0, 0, "myarmor").setCreativeTab(CreativeTabs.tabCombat);
