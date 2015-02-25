@@ -9,6 +9,7 @@ import mymod.biome.MyBiome;
 import mymod.biome.MyCorruptionBiome;
 import mymod.biome.MyFlatBiome;
 import mymod.biome.MyHugeTreeBiome;
+import mymod.biome.MyIceMontainBiome;
 import mymod.blocks.MyBlock;
 import mymod.blocks.MyBlock5;
 import mymod.blocks.MyBlockGen;
@@ -27,6 +28,7 @@ import mymod.items.MyBow;
 import mymod.items.MyFood;
 import mymod.items.MyItem;
 import mymod.items.MyPickaxe;
+import mymod.items.MyShovel;
 import mymod.items.MySword;
 import mymod.items.MySword2;
 import mymod.items.MySword4;
@@ -139,6 +141,7 @@ public class Main {
 
         public static  BiomeGenBase MyHugeTreeBiome_1;
 
+        public static  BiomeGenBase MyIceMontainBiome_1;
 
         static int MyEntityID = 300;
     
@@ -185,6 +188,7 @@ public class Main {
         public static Block MyBlock_3;
         public static Block MyBlock_4;
         public static Block MyBlock_5;
+        public static Block MyBlock_6;
         
         // ITEM AREA
         public static Item MyItem_1;
@@ -226,9 +230,17 @@ public class Main {
         public static Item MyFood_6;
         public static Item MyFood_7;
         public static Item MyFood_8;
+        public static Item MyFood_9;
+   
+   
    
         // AXES AREA
         public static Item MyAxe_1;
+        
+        // SHOVEL AREA
+        public static Item MyShovel_1;
+        
+        
         
         // BOW AREA
         public static Item MyBow_1;
@@ -326,6 +338,13 @@ public class Main {
 		MinecraftForge.setBlockHarvestLevel(MyBlock_5, "pickaxe", 2);
 
 
+		MyBlock_6 = new MyBlock(254, Material.anvil, "MyBlock_6").setHardness(10.6F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep);
+        GameRegistry.registerBlock(MyBlock_6, "MyBlock_6");
+        LanguageRegistry.addName(MyBlock_6, "Green Stone Brick"); 
+		MinecraftForge.setBlockHarvestLevel(MyBlock_6, "pickaxe", 2);
+
+
+
 	// ITEM AREA
         MyItem_1 = new MyItem(2030, "MyItem_1").setCreativeTab(CreativeTabs.tabMaterials).setMaxStackSize(64);
         GameRegistry.registerItem(MyItem_1, "MyItem_1");
@@ -369,6 +388,11 @@ public class Main {
         GameRegistry.registerItem(MyAxe_1, "MyAxe_1");
         LanguageRegistry.addName(MyAxe_1, "Crimsonate Axe");  
     
+    
+    // SHOVEL AREA
+        MyShovel_1 = new MyShovel(2118, MyToolMaterialCrimsonatePickaxe, "MyShovel_1");
+        GameRegistry.registerItem(MyShovel_1, "MyShovel_1");
+        LanguageRegistry.addName(MyShovel_1, "Crimsonate Spade");  
   
         // BOW AREA
   
@@ -422,6 +446,10 @@ public class Main {
         GameRegistry.registerItem(MyFood_8, "MyFood_8");
         LanguageRegistry.addName(MyFood_8, "Coffee Bean");
        
+       
+        MyFood_9 = new MyFood(2117, 0, 0.0F, false, "MyFood_9").setPotionEffect(Potion.digSpeed.id, 200, 1, 1.0F).setAlwaysEdible().setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(16);
+        GameRegistry.registerItem(MyFood_9, "MyFood_9");
+        LanguageRegistry.addName(MyFood_9, "Latte");
     
     //  ARMOR AREA 
         MyHelmet_1 = new MyArmor(2060, MyArmorMaterial_1, 0, 0, "myarmor").setCreativeTab(CreativeTabs.tabCombat);
@@ -496,6 +524,9 @@ public class Main {
          MyHugeTreeBiome_1 = new MyHugeTreeBiome(33);
         GameRegistry.addBiome(MyHugeTreeBiome_1);
         
+        MyIceMontainBiome_1 = new MyIceMontainBiome(34);
+        GameRegistry.addBiome(MyIceMontainBiome_1);
+        
 
         // ENTITY AREA MOBS
         EntityRegistry.registerGlobalEntityID(MyEntityZombie.class, "Face Gobler", EntityRegistry.findGlobalUniqueEntityId());
@@ -563,10 +594,7 @@ public class Main {
         GameRegistry.removeBiome(BiomeGenBase.swampland);
         GameRegistry.removeBiome(BiomeGenBase.taiga);
         GameRegistry.removeBiome(BiomeGenBase.taigaHills); 
-        GameRegistry.removeBiome(MyBiome_1);  
-        GameRegistry.removeBiome(MyCorruptionBiome_1);
 
-        		
         		
 
 	
@@ -888,6 +916,28 @@ public class Main {
         });
 
 
+//  LATTE RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyFood_9, 1), new Object[]
+        {
+                "SX",
+            'S', MyFood_7,
+            'X', Item.bucketMilk,
+        });
+
+
+
+//  GREEN STONE BRICK RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyBlock_6, 8), new Object[]
+        {
+                "SSS",
+                "SXS",
+                "SSS",
+            'S', Block.stoneBrick,
+            'X', Item.slimeBall,
+        });
+
+
+
 
 //  COFFEE RECIPE         
         GameRegistry.addRecipe(new ItemStack(MyFood_7, 1), new Object[]
@@ -896,6 +946,18 @@ public class Main {
                 "X",
             'S', Item.bucketEmpty,
             'X', MyFood_8,
+        });
+
+
+
+//  CRIMSONATE SPADE RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyShovel_1, 1), new Object[]
+        {
+                "S",
+                "X",
+                "X",
+            'S', MyItem_1,
+            'X', MyItem_2,
         });
 
 
