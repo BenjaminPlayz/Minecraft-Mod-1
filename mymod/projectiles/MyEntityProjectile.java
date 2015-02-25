@@ -9,12 +9,8 @@ import net.minecraft.world.World;
 
 public class MyEntityProjectile extends EntityThrowable
 {
-    public static final int itemID = 0;
+    public static int itemID;
 	public int canBePickedUp;
-
-    private double damage = 2.0D;
-
-
 
 	public MyEntityProjectile(World par1World)
     {
@@ -55,33 +51,41 @@ public class MyEntityProjectile extends EntityThrowable
 
         if (!this.worldObj.isRemote)
         {
-            this.explode();
+        	this.explode();
             this.setDead();
         }
     }
-    
-     private void explode()
+
+
+
+
+
+
+	public void setIsCritical(boolean b) {
+
+		
+	}	
+
+	public double getDamage() {
+
+		return 0;
+	}
+
+	public void setDamage(double d) {
+
+	}
+
+	public void setKnockbackStrength(int l) {
+
+		
+	}
+
+    private void explode()
     {
-        float f = 1.0F;
+        float f = 4.0F;
         this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, f, true);
     }
 
-	public void setIsCritical(boolean b) {
-		
-	}
 
- public void setDamage(double par1)
-    {
-        this.damage = par1;
-    }
-
-	 public double getDamage()
-    {
-        return this.damage;
-    }
-
-	public void setKnockbackStrength(int l) {
-		
-	}
 
 }

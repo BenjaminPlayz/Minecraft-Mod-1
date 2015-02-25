@@ -7,7 +7,9 @@ import mymod.armor.MyFleshArmor;
 import mymod.armor.MyLapisArmor;
 import mymod.biome.MyBiome;
 import mymod.biome.MyCorruptionBiome;
+import mymod.biome.MyFlatBiome;
 import mymod.blocks.MyBlock;
+import mymod.blocks.MyBlock5;
 import mymod.blocks.MyBlockGen;
 import mymod.boss.wraithlord.MyEntityWraithlord;
 import mymod.boss.wraithlord.MyModelWraithlord;
@@ -82,6 +84,10 @@ public class Main {
                                      /** 1st is Harvest Level, 2nd is Durability, 3rd is Mining Speed, 4th is Attack Damage(Hearts not Hit points) And fifth is Enchantability */
         public static EnumToolMaterial MyToolMaterial = EnumHelper.addToolMaterial("Ice Shard", 3, 2000, 10.0F, 3.0F, 22);
 
+                              /** 1st is Harvest Level, 2nd is Durability, 3rd is Mining Speed, 4th is Attack Damage(Hearts not Hit points) And fifth is Enchantability */
+        public static EnumToolMaterial MyToolMaterialLapisSword = EnumHelper.addToolMaterial("LSWORD", 3, 4567, 5.0F, 5.3F, 22);
+
+
 
         public static EnumToolMaterial MyToolMaterialCrimsonatePickaxe = EnumHelper.addToolMaterial("Crimsonate Pickaxe", 3, 4683, 23.0F, 3.0F, 22);
         
@@ -128,6 +134,9 @@ public class Main {
 
         public static  BiomeGenBase MyCorruptionBiome_1;  
 
+        public static  BiomeGenBase MyFlatBiome_1;
+
+
 
         static int MyEntityID = 300;
     
@@ -164,6 +173,8 @@ public class Main {
         public static Item MySword_3;
         public static Item MySword_4;
         public static Item MySword_5;
+        public static Item MySword_6;    
+            
             
             
         // BLOCK AREA
@@ -171,7 +182,7 @@ public class Main {
         public static Block MyBlock_2;
         public static Block MyBlock_3;
         public static Block MyBlock_4;
-   
+        public static Block MyBlock_5;
         
         // ITEM AREA
         public static Item MyItem_1;
@@ -207,12 +218,20 @@ public class Main {
         // FOOD AREA
         public static Item MyFood_1;
         public static Item MyFood_2;
+        public static Item MyFood_3;
+        public static Item MyFood_4;
+        public static Item MyFood_5;
+        public static Item MyFood_6;
+        public static Item MyFood_7;
+        public static Item MyFood_8;
    
         // AXES AREA
         public static Item MyAxe_1;
         
         // BOW AREA
         public static Item MyBow_1;
+        
+    
         
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
@@ -248,6 +267,11 @@ public class Main {
         MySword_5 = new MySword5(2103, MyToolMaterialCreative, "MySword_5");
         GameRegistry.registerItem(MySword_5, "MySword_5");
         LanguageRegistry.addName(MySword_5, "Insta Killer");
+
+
+        MySword_6 = new MySword(2110, MyToolMaterialLapisSword, "MySword_6");
+        GameRegistry.registerItem(MySword_6, "MySword_6");
+        LanguageRegistry.addName(MySword_6, "Lapis Sword");
 
 
 
@@ -292,6 +316,12 @@ public class Main {
         LanguageRegistry.addName(MyBlock_4, "Corrupt Grass"); 
 		MinecraftForge.setBlockHarvestLevel(MyBlock_4, "shovel", 1);
 
+
+
+		MyBlock_5 = new MyBlock(253, Material.anvil, "MyBlock_5").setHardness(10.6F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep);
+        GameRegistry.registerBlock(MyBlock_5, "MyBlock_5");
+        LanguageRegistry.addName(MyBlock_5, "Coffee Ore"); 
+		MinecraftForge.setBlockHarvestLevel(MyBlock_5, "pickaxe", 2);
 
 
 	// ITEM AREA
@@ -342,13 +372,13 @@ public class Main {
   
         MyBow_1 = new MyBow(2109);
         GameRegistry.registerItem(MyBow_1, "MyBow_1");
-        LanguageRegistry.addName(MyBow_1, "Crimsonate bow");  
+        LanguageRegistry.addName(MyBow_1, "Crimsonate Bow [WIP] DO NOT USE");  
   
   
     
      // FOOD AREA
                           /** First Vaule is HealPoints, Then Saturation Value, Then the last is True or False and it is saying IsWolfsFavoriteFood. */     
-        MyFood_1 = new MyFood(2040, 4, 2.5F, true, "MyFood_1").setAlwaysEdible().setPotionEffect(Potion.moveSpeed.id, 45, 8, 0.1F).setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(32);
+        MyFood_1 = new MyFood(2040, 4, 2.5F, true, "MyFood_1").setAlwaysEdible().setPotionEffect(Potion.moveSpeed.id, 45, 8, 0.3F).setPotionEffect(Potion.damageBoost.id, 5, 1, 0.1F).setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(32);
         GameRegistry.registerItem(MyFood_1, "MyFood_1");
         LanguageRegistry.addName(MyFood_1, "Marshmallow"); 
  
@@ -356,8 +386,40 @@ public class Main {
         MyFood_2 = new MyFood(2104, 6, 4.5F, true, "MyFood_2").setPotionEffect(Potion.resistance.id, 45, 8, 0.1F).setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(64);
         GameRegistry.registerItem(MyFood_2, "MyFood_2");
         LanguageRegistry.addName(MyFood_2, "Gobler Meat"); 
-    
-    
+   
+                              /** First Vaule is HealPoints, Then Saturation Value, Then the last is True or False and it is saying IsWolfsFavoriteFood. */     
+        MyFood_3 = new MyFood(2111, 2, 1.5F, false, "MyFood_3").setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(64);
+        GameRegistry.registerItem(MyFood_3, "MyFood_3");
+        LanguageRegistry.addName(MyFood_3, "Cheese");
+       
+                                 /** First Vaule is HealPoints, Then Saturation Value, Then the last is True or False and it is saying IsWolfsFavoriteFood. */     
+        MyFood_4 = new MyFood(2112, 12, 2.5F, false, "MyFood_4").setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(64);
+        GameRegistry.registerItem(MyFood_4, "MyFood_4");
+        LanguageRegistry.addName(MyFood_4, "Pepperoni Pizza");
+       
+       
+                                     /** First Vaule is HealPoints, Then Saturation Value, Then the last is True or False and it is saying IsWolfsFavoriteFood. */     
+        MyFood_5 = new MyFood(2113, 10, 2.5F, false, "MyFood_5").setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(64);
+        GameRegistry.registerItem(MyFood_5, "MyFood_5");
+        LanguageRegistry.addName(MyFood_5, "Cheese Pizza");
+       
+       
+                                          /** First Vaule is HealPoints, Then Saturation Value, Then the last is True or False and it is saying IsWolfsFavoriteFood. */     
+        MyFood_6 = new MyFood(2114, 2, 1.5F, false, "MyFood_6").setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(64);
+        GameRegistry.registerItem(MyFood_6, "MyFood_6");
+        LanguageRegistry.addName(MyFood_6, "Pepperoni");
+       
+       
+                                               /** First Vaule is HealPoints, Then Saturation Value, Then the last is True or False and it is saying IsWolfsFavoriteFood. */     
+        MyFood_7 = new MyFood(2115, 0, 0.0F, false, "MyFood_7").setPotionEffect(Potion.moveSpeed.id, 500, 5, 1.0F).setAlwaysEdible().setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(64);
+        GameRegistry.registerItem(MyFood_7, "MyFood_7");
+        LanguageRegistry.addName(MyFood_7, "Coffee");
+       
+       
+          MyFood_8 = new MyFood(2116, 0, 0.0F, false, "MyFood_8").setAlwaysEdible().setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(16);
+        GameRegistry.registerItem(MyFood_8, "MyFood_8");
+        LanguageRegistry.addName(MyFood_8, "Coffee Bean");
+       
     
     //  ARMOR AREA 
         MyHelmet_1 = new MyArmor(2060, MyArmorMaterial_1, 0, 0, "myarmor").setCreativeTab(CreativeTabs.tabCombat);
@@ -424,6 +486,13 @@ public class Main {
         MyCorruptionBiome_1 = new MyCorruptionBiome(31);
         GameRegistry.addBiome(MyCorruptionBiome_1);
 
+
+        MyFlatBiome_1 = new MyFlatBiome(32);
+        GameRegistry.addBiome(MyFlatBiome_1);
+        
+        
+        
+
         // ENTITY AREA MOBS
         EntityRegistry.registerGlobalEntityID(MyEntityZombie.class, "Face Gobler", EntityRegistry.findGlobalUniqueEntityId());
         EntityRegistry.addSpawn(MyEntityZombie.class, 50, 1, 5, EnumCreatureType.monster, BiomeGenBase.desert); 
@@ -462,6 +531,37 @@ public class Main {
 		MyAchievement_2 = new Achievement(2002, "MyAchievement_2", -2, -1, MyItem_4, AchievementList.openInventory).registerAchievement();
 		//	(id, "NameOfAchievement", x, y coordinates on Achievement map, icon, Required Achievement to unlock)
 		// 	For no Pre-required achievement, use "(Achievement)null"	
+        		
+        		
+        		
+        		
+        		
+          
+                  		//  REMOVE OTHER BIOMES
+        GameRegistry.removeBiome(BiomeGenBase.beach);
+        GameRegistry.removeBiome(BiomeGenBase.desert);
+        GameRegistry.removeBiome(BiomeGenBase.desertHills);
+        GameRegistry.removeBiome(BiomeGenBase.desertHills);
+        GameRegistry.removeBiome(BiomeGenBase.extremeHills);
+        GameRegistry.removeBiome(BiomeGenBase.extremeHillsEdge);
+        GameRegistry.removeBiome(BiomeGenBase.forest);
+        GameRegistry.removeBiome(BiomeGenBase.forestHills);
+        GameRegistry.removeBiome(BiomeGenBase.frozenOcean);
+        GameRegistry.removeBiome(BiomeGenBase.frozenRiver);
+        GameRegistry.removeBiome(BiomeGenBase.iceMountains);
+        GameRegistry.removeBiome(BiomeGenBase.icePlains);
+        GameRegistry.removeBiome(BiomeGenBase.jungle);
+        GameRegistry.removeBiome(BiomeGenBase.jungleHills);
+        GameRegistry.removeBiome(BiomeGenBase.mushroomIsland);
+        GameRegistry.removeBiome(BiomeGenBase.ocean);
+        GameRegistry.removeBiome(BiomeGenBase.plains);
+        GameRegistry.removeBiome(BiomeGenBase.river);
+        GameRegistry.removeBiome(BiomeGenBase.swampland);
+        GameRegistry.removeBiome(BiomeGenBase.taiga);
+        GameRegistry.removeBiome(BiomeGenBase.taigaHills); 
+          
+
+        		
         		
 
 	
@@ -701,6 +801,28 @@ public class Main {
         }); 
         
 
+ //  SWORD RECIPE  
+        GameRegistry.addRecipe(new ItemStack(MySword_6, 1), new Object[]
+        {
+                "XX ",
+                " XX",
+                " S ",
+            'S', Item.stick,
+            'X', Block.blockLapis,
+        }); 
+        
+
+//  CHEESE PIZZA RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyFood_5, 2), new Object[]
+        {
+                "SSS",
+                "XXX",
+            'S', MyFood_3,
+            'X', Item.bread,  
+        }); 
+
+
+
 
  //  CRIMSONATE INGOT RECIPE         
         GameRegistry.addRecipe(new ItemStack(MyItem_1, 1), new Object[]
@@ -733,6 +855,47 @@ public class Main {
         });
 
 
+
+
+//  CHEESE RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyFood_3, 3), new Object[]
+        {
+                "SSS",
+            'S', Item.bucketMilk,
+        });
+
+
+//  PEPPERONI PIZZA RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyFood_4, 1), new Object[]
+        {
+                "SX",
+            'S', MyFood_5,
+            'X', MyFood_6,
+        });
+
+
+//  PEPPERONI RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyFood_6, 3), new Object[]
+        {
+                "SX",
+            'S', Item.beefCooked,
+            'X', Item.porkCooked,
+        });
+
+
+
+//  COFFEE RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyFood_7, 1), new Object[]
+        {
+                "S",
+                "X",
+            'S', Item.bucketEmpty,
+            'X', Block.cocoaPlant,
+        });
+
+
+//  SMELTING RECIPE
+        GameRegistry.addSmelting(MyBlock_5.blockID, (new ItemStack(MyFood_8, 2)), 45);
 
 
 
