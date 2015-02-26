@@ -88,7 +88,13 @@ public class Main {
         public static EnumToolMaterial MyToolMaterial = EnumHelper.addToolMaterial("Ice Shard", 3, 2000, 10.0F, 3.0F, 22);
 
                               /** 1st is Harvest Level, 2nd is Durability, 3rd is Mining Speed, 4th is Attack Damage(Hearts not Hit points) And fifth is Enchantability */
-        public static EnumToolMaterial MyToolMaterialLapisSword = EnumHelper.addToolMaterial("LSWORD", 3, 4567, 5.0F, 5.3F, 22);
+        public static EnumToolMaterial MyToolMaterialLapisSword = EnumHelper.addToolMaterial("LSWORD", 3, 4567, 5.0F, 5.7F, 22);
+
+
+                     /** 1st is Harvest Level, 2nd is Durability, 3rd is Mining Speed, 4th is Attack Damage(Hearts not Hit points) And fifth is Enchantability */
+        public static EnumToolMaterial MyToolMaterialLapisPick = EnumHelper.addToolMaterial("LPICK", 3, 4304, 18.3F, 1.3F, 22);
+
+
 
 
 
@@ -189,6 +195,9 @@ public class Main {
         public static Block MyBlock_4;
         public static Block MyBlock_5;
         public static Block MyBlock_6;
+        public static Block MyBlock_7; 
+        
+        
         
         // ITEM AREA
         public static Item MyItem_1;
@@ -202,6 +211,8 @@ public class Main {
         public static Item MyPickaxe_1;
         public static Item MyPickaxe_2;        
         public static Item MyPickaxe_3;
+        public static Item MyPickaxe_4;
+   
    
         // ARMOR AREA
         
@@ -306,6 +317,16 @@ public class Main {
         LanguageRegistry.addName(MyPickaxe_3, "Flesh Pickaxe"); 
 	
 	
+	    MyPickaxe_4 = new MyPickaxe(2120, MyToolMaterialLapisPick, "MyPickaxe_4");
+        GameRegistry.registerItem(MyPickaxe_4, "MyPickaxe_4");
+        LanguageRegistry.addName(MyPickaxe_4, "Lapis Pickaxe"); 
+	
+	
+	
+	
+	
+	
+	
 	//  BLOCK AREA
                                                                     /** Hardness is how long it takes to mine block, Resistance is how strong the block is to Explosions */     	
         MyBlock_1 = new MyBlock(250, Material.rock, "MyBlock_1").setLightValue(0.7586F).setHardness(10.5F).setResistance(14.5F).setStepSound(Block.soundStoneFootstep);
@@ -342,6 +363,16 @@ public class Main {
         GameRegistry.registerBlock(MyBlock_6, "MyBlock_6");
         LanguageRegistry.addName(MyBlock_6, "Green Stone Brick"); 
 		MinecraftForge.setBlockHarvestLevel(MyBlock_6, "pickaxe", 2);
+
+
+
+		MyBlock_7 = new MyBlock(255, Material.anvil, "MyBlock_7").setHardness(10.6F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setLightValue(1.0F);
+        GameRegistry.registerBlock(MyBlock_7, "MyBlock_7");
+        LanguageRegistry.addName(MyBlock_7, "Luminant Green Stone Brick"); 
+		MinecraftForge.setBlockHarvestLevel(MyBlock_7, "pickaxe", 2);
+
+
+		
 
 
 
@@ -577,32 +608,7 @@ public class Main {
         		
         		
         		
-        		
-          
-                  		//  REMOVE OTHER BIOMES
-        GameRegistry.removeBiome(BiomeGenBase.beach);
-        GameRegistry.removeBiome(BiomeGenBase.desert);
-        GameRegistry.removeBiome(BiomeGenBase.desertHills);
-        GameRegistry.removeBiome(BiomeGenBase.desertHills);
-        GameRegistry.removeBiome(BiomeGenBase.extremeHills);
-        GameRegistry.removeBiome(BiomeGenBase.extremeHillsEdge);
-        GameRegistry.removeBiome(BiomeGenBase.forest);
-        GameRegistry.removeBiome(BiomeGenBase.forestHills);
-        GameRegistry.removeBiome(BiomeGenBase.frozenOcean);
-        GameRegistry.removeBiome(BiomeGenBase.frozenRiver);
-        GameRegistry.removeBiome(BiomeGenBase.iceMountains);
-        GameRegistry.removeBiome(BiomeGenBase.icePlains);
-        GameRegistry.removeBiome(BiomeGenBase.jungle);
-        GameRegistry.removeBiome(BiomeGenBase.jungleHills);
-        GameRegistry.removeBiome(BiomeGenBase.mushroomIsland);
-        GameRegistry.removeBiome(BiomeGenBase.ocean);
-        GameRegistry.removeBiome(BiomeGenBase.plains);
-        GameRegistry.removeBiome(BiomeGenBase.river);
-        GameRegistry.removeBiome(BiomeGenBase.swampland);
-        GameRegistry.removeBiome(BiomeGenBase.taiga);
-        GameRegistry.removeBiome(BiomeGenBase.taigaHills); 
-
-        		
+    
 
 	
 	
@@ -651,6 +657,19 @@ public class Main {
             
         }); 
 
+        		
+        		
+        		        //  PICKAXE RECIPE  
+        GameRegistry.addRecipe(new ItemStack(MyPickaxe_4, 1), new Object[]
+        {
+                "XXX",
+                " S ",
+                " S ",
+            'S', Item.stick,
+            'X', Block.blockLapis,
+            
+        }); 
+        		
         		
         	    		
          //  ITEM RECIPE         
@@ -872,6 +891,19 @@ public class Main {
                 "SSS",
             'S', MyItem_6,
         });
+
+
+ //  LUMINANT GREEN BRICKS RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyBlock_7, 8), new Object[]
+        {
+                "SSS",
+                "SXS",
+                "SSS",
+            'S', MyBlock_6,
+            'X', Block.glowStone,
+        });
+
+
 
 
 //  CRIMSONATE CHUNK RECIPE         
