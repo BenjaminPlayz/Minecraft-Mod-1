@@ -90,6 +90,9 @@ public class Main {
                               /** 1st is Harvest Level, 2nd is Durability, 3rd is Mining Speed, 4th is Attack Damage(Hearts not Hit points) And fifth is Enchantability */
         public static EnumToolMaterial MyToolMaterialLapisSword = EnumHelper.addToolMaterial("LSWORD", 3, 4567, 5.0F, 5.7F, 22);
 
+        public static EnumToolMaterial MyToolMaterialRedstoneSword = EnumHelper.addToolMaterial("RSWORD", 3, 10000, 5.0F, 4.5F, 22);
+
+
 
                      /** 1st is Harvest Level, 2nd is Durability, 3rd is Mining Speed, 4th is Attack Damage(Hearts not Hit points) And fifth is Enchantability */
         public static EnumToolMaterial MyToolMaterialLapisPick = EnumHelper.addToolMaterial("LPICK", 3, 4304, 18.3F, 1.3F, 22);
@@ -133,7 +136,7 @@ public class Main {
                                  
 
   /** maxDamageFactor, damageReductionAmountArray, enchantability */
-        public static EnumArmorMaterial MyArmorMaterial_3 = EnumHelper.addArmorMaterial("LapisArmor", 40, new int[]{5, 9, 5, 5}, 100);
+        public static EnumArmorMaterial MyArmorMaterial_3 = EnumHelper.addArmorMaterial("LapisArmor", 250, new int[]{5, 9, 5, 5}, 100);
                                         
                                  
                                  
@@ -185,7 +188,7 @@ public class Main {
         public static Item MySword_4;
         public static Item MySword_5;
         public static Item MySword_6;    
-            
+        public static Item MySword_7;      
             
             
         // BLOCK AREA
@@ -196,7 +199,7 @@ public class Main {
         public static Block MyBlock_5;
         public static Block MyBlock_6;
         public static Block MyBlock_7; 
-        
+     
         
         
         // ITEM AREA
@@ -247,15 +250,24 @@ public class Main {
    
         // AXES AREA
         public static Item MyAxe_1;
-        
+        public static Item MyAxe_2; 
+        public static Item MyAxe_3;   
         // SHOVEL AREA
         public static Item MyShovel_1;
-        
+        public static Item MyShovel_2;
         
         
         // BOW AREA
         public static Item MyBow_1;
         
+    
+    // FURNACE AREA TESTING STUFF
+    
+    public static Block blockLapisFurnaceIdle;
+    public static Block blockLapisFurnaceActive;
+    
+    
+    
     
         
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
@@ -297,6 +309,13 @@ public class Main {
         MySword_6 = new MySword(2110, MyToolMaterialLapisSword, "MySword_6");
         GameRegistry.registerItem(MySword_6, "MySword_6");
         LanguageRegistry.addName(MySword_6, "Lapis Sword");
+
+
+
+        MySword_7 = new MySword2(2124, MyToolMaterialRedstoneSword, "MySword_7");
+        GameRegistry.registerItem(MySword_7, "MySword_7");
+        LanguageRegistry.addName(MySword_7, "Redstone Sword");
+
 
 
 
@@ -372,6 +391,8 @@ public class Main {
 		MinecraftForge.setBlockHarvestLevel(MyBlock_7, "pickaxe", 2);
 
 
+
+
 		
 
 
@@ -419,11 +440,37 @@ public class Main {
         GameRegistry.registerItem(MyAxe_1, "MyAxe_1");
         LanguageRegistry.addName(MyAxe_1, "Crimsonate Axe");  
     
+ 
+        MyAxe_2 = new MyAxe(2121, MyToolMaterialLapisPick, "MyAxe_2");
+        GameRegistry.registerItem(MyAxe_2, "MyAxe_2");
+        LanguageRegistry.addName(MyAxe_2, "Lapis Axe");
+    
+    
+ 
+        MyAxe_3 = new MyAxe(2122, MyToolMaterialLapisPick, "MyAxe_3");
+        GameRegistry.registerItem(MyAxe_3, "MyAxe_3");
+        LanguageRegistry.addName(MyAxe_3, "Redstone Axe");
+    
+    
+    
+    
     
     // SHOVEL AREA
         MyShovel_1 = new MyShovel(2118, MyToolMaterialCrimsonatePickaxe, "MyShovel_1");
         GameRegistry.registerItem(MyShovel_1, "MyShovel_1");
         LanguageRegistry.addName(MyShovel_1, "Crimsonate Spade");  
+  
+ 
+        MyShovel_2 = new MyShovel(2123, MyToolMaterialLapisPick, "MyShovel_2");
+        GameRegistry.registerItem(MyShovel_2, "MyShovel_2");
+        LanguageRegistry.addName(MyShovel_2, "Lapis Spade");  
+  
+  
+  
+  
+  
+  
+  
   
         // BOW AREA
   
@@ -606,11 +653,10 @@ public class Main {
 		// 	For no Pre-required achievement, use "(Achievement)null"	
         		
         		
-        		
+
         		
     
 
-	
 	
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */	
 
@@ -927,6 +973,34 @@ public class Main {
         });
 
 
+// LAPIS AXE RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyAxe_2, 1), new Object[]
+        {
+                "SS",
+                "SX",
+                " X",
+            'S', Block.blockLapis,
+            'X', Item.stick,
+        });
+
+
+
+// REDSTONE AXE RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyAxe_3, 1), new Object[]
+        {
+                "SS",
+                "SX",
+                " X",
+            'S', Block.blockRedstone,
+            'X', Item.stick,
+        });
+
+
+
+
+
+
+
 
 
 //  CHEESE RECIPE         
@@ -1000,8 +1074,39 @@ public class Main {
         });
 
 
+
+
+//  LAPIS SPADE RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyShovel_2, 1), new Object[]
+        {
+                "S",
+                "X",
+                "X",
+            'S', Block.blockLapis,
+            'X', Item.stick,
+        });
+
+
+
+
+
+//  REDSTONE SWORD RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MySword_7, 1), new Object[]
+        {
+                "S",
+                "S",
+                "X",
+            'S', Block.blockRedstone,
+            'X', Item.stick,
+        });
+
+
+
+
+
 //  SMELTING RECIPE
         GameRegistry.addSmelting(MyBlock_5.blockID, (new ItemStack(MyFood_8, 2)), 45);
+
 
 
 

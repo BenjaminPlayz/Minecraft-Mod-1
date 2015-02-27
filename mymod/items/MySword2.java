@@ -1,12 +1,14 @@
 package mymod.items;
 
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemStack;
 
 
 public class MySword2 extends ItemSword {
@@ -27,6 +29,16 @@ public class MySword2 extends ItemSword {
     {
         this.itemIcon = iconRegister.registerIcon(texturePath);
     }   
+
+
+
+   public void onCreated(ItemStack item, World world, EntityPlayer player)
+        {
+            item.addEnchantment(Enchantment.looting, 6);
+           
+        }
+
+
 
 
 }
