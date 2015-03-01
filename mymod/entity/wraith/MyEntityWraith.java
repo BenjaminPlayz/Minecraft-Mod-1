@@ -1,5 +1,6 @@
 package mymod.entity.wraith;
 
+import mymod.Main;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
@@ -25,14 +26,14 @@ public class MyEntityWraith extends EntityMob
     {
         super(par1World);
         this.isImmuneToFire = false;
-        this.experienceValue = 30;
+        this.experienceValue = 45;
     }
 
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(15.0D);
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(100.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(20.0D);
     }
 
     protected void entityInit()
@@ -46,7 +47,7 @@ public class MyEntityWraith extends EntityMob
      */
     protected String getLivingSound()
     {
-        return "mob.spider.say";
+        return "mob.endermen.idle";
     }
 
     /**
@@ -54,7 +55,7 @@ public class MyEntityWraith extends EntityMob
      */
     protected String getHurtSound()
     {
-        return "mob.endermen.scream";
+        return "mob.dragon.hit";
     }
 
     /**
@@ -62,7 +63,7 @@ public class MyEntityWraith extends EntityMob
      */
     protected String getDeathSound()
     {
-        return "mob.irongolem.death";
+        return "mob.skeleton.death";
     }
 
     @SideOnly(Side.CLIENT)
@@ -108,7 +109,7 @@ public class MyEntityWraith extends EntityMob
 
         if (this.rand.nextInt(24) == 0)
         {
-            this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.fire", 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F);
+            this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, " mob.wither.shoot", 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F);
         }
 
         if (!this.onGround && this.motionY < 0.0D)
@@ -116,10 +117,7 @@ public class MyEntityWraith extends EntityMob
             this.motionY *= 0.6D;
         }
 
-        for (int i = 0; i < 2; ++i)
-        {
-            this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
-        }
+       
 
         super.onLivingUpdate();
     }
@@ -131,7 +129,7 @@ public class MyEntityWraith extends EntityMob
     {
         if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
         {
-            this.attackTime = 20;
+            this.attackTime = 5;
             this.attackEntityAsMob(par1Entity);
         }
         else if (par2 < 30.0F)
@@ -167,7 +165,9 @@ public class MyEntityWraith extends EntityMob
 
                     for (int i = 0; i < 1; ++i)
                     {
-                       
+                        EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.worldObj, this, d0 + this.rand.nextGaussian() * (double)f1, d1, d2 + this.rand.nextGaussian() * (double)f1);
+                        entitysmallfireball.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
+                        this.worldObj.spawnEntityInWorld(entitysmallfireball);
                     }
                 }
             }
@@ -187,8 +187,23 @@ public class MyEntityWraith extends EntityMob
      */
     protected int getDropItemId()
     {
-        return Item.blazeRod.itemID;
+        return Main.MyItem_7.itemID;
     }
+    
+
+    
+    
+double j = 50.05;
+
+
+    protected void dropRareDrop(int par1)
+    {
+    if(j == 50.05);
+        this.dropItem(Main.MySword_8.itemID, 1);
+    }
+
+
+
 
     /**
      * Returns true if the entity is on fire. Used by render to add the fire effect on rendering.
@@ -210,7 +225,7 @@ public class MyEntityWraith extends EntityMob
 
             for (int k = 0; k < j; ++k)
             {
-                this.dropItem(Item.blazeRod.itemID, 1);
+                this.dropItem(Main.MyItem_7.itemID, 2);
             }
         }
     }

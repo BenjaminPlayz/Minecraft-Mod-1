@@ -11,11 +11,13 @@ import mymod.biome.MyFlatBiome;
 import mymod.biome.MyHugeTreeBiome;
 import mymod.biome.MyIceMontainBiome;
 import mymod.blocks.MyBlock;
-import mymod.blocks.MyBlock5;
 import mymod.blocks.MyBlockGen;
 import mymod.boss.wraithlord.MyEntityWraithlord;
 import mymod.boss.wraithlord.MyModelWraithlord;
 import mymod.boss.wraithlord.MyRenderWraithlord;
+import mymod.entity.ogre.MyEntityOgre;
+import mymod.entity.ogre.MyModelOgre;
+import mymod.entity.ogre.MyRenderOgre;
 import mymod.entity.wraith.MyEntityWraith;
 import mymod.entity.wraith.MyModelWraith;
 import mymod.entity.wraith.MyRenderWraith;
@@ -92,6 +94,9 @@ public class Main {
 
         public static EnumToolMaterial MyToolMaterialRedstoneSword = EnumHelper.addToolMaterial("RSWORD", 3, 10000, 5.0F, 4.5F, 22);
 
+        
+        public static EnumToolMaterial MyToolMaterialCorruptSword = EnumHelper.addToolMaterial("CORRUPTSWORD", 3, 6000, 1.0F, 10.0F, 10);
+
 
 
                      /** 1st is Harvest Level, 2nd is Durability, 3rd is Mining Speed, 4th is Attack Damage(Hearts not Hit points) And fifth is Enchantability */
@@ -105,7 +110,7 @@ public class Main {
         
 
 
-        public static EnumToolMaterial MyToolMaterialCrimsonateSword = EnumHelper.addToolMaterial("Crimsonate Sword", 3, 4864, 8.0F, 7.0F, 22);
+        public static EnumToolMaterial MyToolMaterialCrimsonateSword = EnumHelper.addToolMaterial("Crimsonate Sword", 3, 4864, 8.0F, 9.0F, 100);
 
 
 
@@ -189,7 +194,7 @@ public class Main {
         public static Item MySword_5;
         public static Item MySword_6;    
         public static Item MySword_7;      
-            
+        public static Item MySword_8;      
             
         // BLOCK AREA
         public static Block MyBlock_1;
@@ -209,6 +214,11 @@ public class Main {
         public static Item MyItem_4;
         public static Item MyItem_5;
         public static Item MyItem_6;   
+        public static Item MyItem_7;   
+        public static Item MyItem_8;
+        public static Item MyItem_9;
+   
+       
    
         // PICKAXE AREA
         public static Item MyPickaxe_1;
@@ -315,6 +325,14 @@ public class Main {
         MySword_7 = new MySword2(2124, MyToolMaterialRedstoneSword, "MySword_7");
         GameRegistry.registerItem(MySword_7, "MySword_7");
         LanguageRegistry.addName(MySword_7, "Redstone Sword");
+
+
+
+
+        MySword_8 = new MySword(2125, MyToolMaterialCorruptSword, "MySword_8");
+        GameRegistry.registerItem(MySword_8, "MySword_8");
+        LanguageRegistry.addName(MySword_8, "Corrupt Blade");
+
 
 
 
@@ -427,6 +445,27 @@ public class Main {
         GameRegistry.registerItem(MyItem_6, "MyItem_6");
         LanguageRegistry.addName(MyItem_6, "Crimsonate Chunk");  
 	
+   
+   
+    	MyItem_7 = new MyItem(2126, "MyItem_7").setCreativeTab(CreativeTabs.tabMaterials).setMaxStackSize(64);
+        GameRegistry.registerItem(MyItem_7, "MyItem_7");
+        LanguageRegistry.addName(MyItem_7, "Corrupt Shard"); 
+   
+   
+        MyItem_8 = new MyItem(2127, "MyItem_8").setCreativeTab(CreativeTabs.tabMaterials).setMaxStackSize(64);
+        GameRegistry.registerItem(MyItem_8, "MyItem_8");
+        LanguageRegistry.addName(MyItem_8, "Corrupt Chunk"); 
+   
+   
+   
+        MyItem_9 = new MyItem(2128, "MyItem_9").setCreativeTab(CreativeTabs.tabMaterials).setMaxStackSize(64);
+        GameRegistry.registerItem(MyItem_9, "MyItem_9");
+        LanguageRegistry.addName(MyItem_9, "Corrupt Ingot"); 
+   
+   
+   
+   
+   
    
         MyProjectile_1 = new  MyProjectile(2101, " MyProjectile_1").setCreativeTab(CreativeTabs.tabMaterials);
         GameRegistry.registerItem( MyProjectile_1, " MyProjectile_1");
@@ -642,6 +681,15 @@ public class Main {
         ModLoader.addLocalization("entity.Wraith Lord.name", "Wraith Lord");
 
 	
+	
+	
+	    //  REGISTER YOUR ENTITY
+        EntityRegistry.registerGlobalEntityID(MyEntityOgre.class, "Ogre", EntityRegistry.findGlobalUniqueEntityId()); 
+        EntityRegistry.addSpawn(MyEntityOgre.class, 50, 1, 5, EnumCreatureType.monster, MyHugeTreeBiome_1);  
+        registerEntityEgg(MyEntityOgre.class, (new Color(0, 132, 199)).getRGB(), (new Color(108, 255, 155)).getRGB());
+        RenderingRegistry.registerEntityRenderingHandler(MyEntityOgre.class, new MyRenderOgre(new MyModelOgre(), 0.3F));
+        ModLoader.addLocalization("entity.Ogre.name", "Ogre");
+        
 	
 	
         
@@ -1098,6 +1146,44 @@ public class Main {
                 "X",
             'S', Block.blockRedstone,
             'X', Item.stick,
+        });
+
+
+
+
+
+
+
+//  BOOMSTICK RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyProjectile_1, 1), new Object[]
+        {
+                "SX",
+            'S', Block.tnt,
+            'X', Item.stick,
+        });
+
+
+
+//  CORRUPT CHUNK RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyItem_8, 1), new Object[]
+        {
+                "SSS",
+                "SSS",
+                "SSS",
+            'S', MyItem_7,
+        });
+
+
+
+
+
+//  CORRUPT INGOT RECIPE         
+        GameRegistry.addRecipe(new ItemStack(MyItem_9, 2), new Object[]
+        {
+                "SSS",
+                "SSS",
+                "SSS",
+            'S', MyItem_8,
         });
 
 

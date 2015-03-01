@@ -82,7 +82,7 @@ public class MyEntityProjectile extends EntityThrowable
 
     private void explode()
     {
-        float f = 4.0F;
+        float f = 5.0F;
         this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, f, true);
     }
 

@@ -42,6 +42,11 @@ public class MyEntityWraithlord extends EntityMob implements IBossDisplayData, I
     private int[] field_82224_i = new int[2];
     private int field_82222_j;
 
+
+
+
+
+
     /** Selector used to determine the entities a wither boss should attack. */
    // private static final IEntitySelector attackEntitySelector = new EntityWitherAttackFilter();
 
@@ -49,8 +54,8 @@ public class MyEntityWraithlord extends EntityMob implements IBossDisplayData, I
     {
         super(par1World);
         this.setHealth(this.getMaxHealth());
-        this.setSize(0.9F, 4.0F);
-        this.isImmuneToFire = true;
+        this.setSize(0.9F, 1.3F);
+        this.isImmuneToFire = false;
         this.getNavigator().setCanSwim(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIArrowAttack(this, 1.0D, 40, 20.0F));
@@ -100,7 +105,7 @@ public class MyEntityWraithlord extends EntityMob implements IBossDisplayData, I
      */
     protected String getLivingSound()
     {
-        return "mob.wither.idle";
+        return "mob.endermen.idle";
     }
 
     /**
